@@ -210,7 +210,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                     'قم بإدخال البيانات لإكمال التسجيل',
                                                 showCloseIcon: true,
                                               ).show();
-                                            } else {
+                                            } // end of if (_email.text == '' ||  _pass.text == '')
+                                            
+                                             else {
                                               if (_pass.text.length < 6) {
                                                 AwesomeDialog(
                                                   //if there is missing info this will be displayed
@@ -231,8 +233,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                       'يجب أن تكون كلمة السر أكثر من 6 أحرف/أرقام',
                                                   showCloseIcon: true,
                                                 ).show();
-                                              } else {
-                                                print('');
+                                              } // end of if (_pass.text.length < 6)
+                                              else {
+                                                print('Done');
                                                 bool check =
                                                     await checkIfEmailInUse(
                                                         _email.text);
@@ -241,13 +244,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                       .createUserWithEmailAndPassword(
                                                           email: _email.text,
                                                           password: _pass.text);
-                                                  Navigator.pushReplacement(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            HomePageScreen()),
-                                                  );
-                                                } else {
+                                                  Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          RegistrationScreenSecond(
+                                                            em: _email.text,
+                                                            pass: _pass.text,
+                                                          )),
+                                                );
+                                                  
+                                                } // end of if check == false --> not used
+                                                 else {
                                                   AwesomeDialog(
                                                     //if there is missing info this will be displayed
                                                     context: context,
@@ -269,17 +277,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                     showCloseIcon: true,
                                                   ).show();
                                                 }
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          RegistrationScreenSecond(
-                                                            em: _email.text,
-                                                            pass: _pass.text,
-                                                          )),
-                                                );
-                                              }
-                                              ;
+                                               
+                                              };
                                             }
                                           },
                                           startColor: Colors.amber,
@@ -370,7 +369,7 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
         elevation: 3,
         pressElevation: 5,
         backgroundColor: Colors.grey[500],
-        selectedColor: Colors.amber[500],
+        selectedColor: Colors.lightGreen,
         onSelected: (bool selected) {
           setState(() {
             if (selected) {

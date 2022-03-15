@@ -8,6 +8,7 @@ import 'home_page_screen.dart';
 import 'rigster_screen.dart';
 
 
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -98,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               
                                               Icons.email),
                                           ),
-                                          hintText: ' أدخل الإيميل',
+                                          hintText: 'أدخل الإيميل',
                                           contentPadding: EdgeInsets.symmetric(
                                             vertical: 10,
                                             horizontal: 20,
@@ -136,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         horizontal: 30,
                                       ),
                                       child: TextField(
-                                        obscureText: true,
+                                        obscureText: !_passwordVisible,
                                         controller: _pass,
                                         textAlign: TextAlign.right,
                                         decoration: InputDecoration(
@@ -224,25 +225,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 showCloseIcon: true,
                                               ).show()
                                             : //else
-                                            print('');
+                                            print('Successfull');
                                         bool check = await checkIfEmailInUse(
                                             _email.text);
-                                        if (check == true) {
-                                          print('Successfull');
-                                          // logindata?.setBool('login', false);
-                                          // logindata?.setString('email',  _email.text);
-                                          await FirebaseAuth.instance
-                                              .signInWithEmailAndPassword(
-                                                  email: _email.text,
-                                                  password: _pass.text);
+                                        if (_pass.text.length>0 && _email.text.length>0 && check == false) {
+                                          
 
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HomePageScreen()),
-                                          );
-                                        } else {
                                           AwesomeDialog(
                                             //if there is missing info this will be displayed
                                             context: context,
@@ -260,6 +248,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 'البريد الإلكتروني أو كلمة السر غير صحيحة',
                                             showCloseIcon: true,
                                           ).show();
+
+                                        }
+                                         else {
+                                            print('Done');
+                                          await FirebaseAuth.instance
+                                              .signInWithEmailAndPassword(
+                                                  email: _email.text,
+                                                  password: _pass.text);
+
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePageScreen()),
+                                          );
+                                          
                                         }
                                       },
                                       startColor: Colors.amber,

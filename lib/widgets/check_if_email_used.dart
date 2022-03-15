@@ -19,6 +19,6 @@
                         } catch (error) {
                           // Handle error
                           // ...
-                          return true;
+                          return false;
                         }
                       }
