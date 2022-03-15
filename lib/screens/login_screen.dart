@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               
                                               Icons.email),
                                           ),
-                                          hintText: 'أدخل الإيميل',
+                                          hintText: ' أدخل الإيميل',
                                           contentPadding: EdgeInsets.symmetric(
                                             vertical: 10,
                                             horizontal: 20,
