@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "223683468464",
+    "project_id": "husbh-app-41171",
+    "storage_bucket": "husbh-app-41171.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223683468464:android:0a096aefe7da99f9d76f75",
+        "android_client_info": {
+          "package_name": "com.husbh.husbh_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223683468464-us62vnjmdkgpcoc5ar5m3fpll5ndoa2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJUoWbVCMgA6L3cJXs4U3CQbIvAKLKdaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223683468464-us62vnjmdkgpcoc5ar5m3fpll5ndoa2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
