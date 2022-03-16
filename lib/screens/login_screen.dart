@@ -100,6 +100,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                               Icons.email),
                                           ),
                                           hintText: 'أدخل الإيميل',
+                                          hintStyle: TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'ReadexPro',
+                                            ),
                                           contentPadding: EdgeInsets.symmetric(
                                             vertical: 10,
                                             horizontal: 20,
@@ -171,6 +175,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                               Icons.lock),
                                           ),
                                           hintText: 'أدخل كلمة السر',
+                                          hintStyle: TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'ReadexPro',
+                                            ),
                                           contentPadding: EdgeInsets.symmetric(
                                             vertical: 10,
                                             horizontal: 20,
@@ -275,7 +283,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Text('ليس لديك حساب؟'),
+                                        Text(
+                                          'ليس لديك حساب؟',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                              fontFamily: 'ReadexPro',
+                                                         ),
+                                          
+                                          ),
                                         
                                         TextButton(
                                           style: TextButton.styleFrom(
@@ -293,7 +308,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           child: const Text(
                                             'أنشأ حسابًا الآن',
                                             style: TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 11,
+                                              fontFamily: 'ReadexPro',
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),

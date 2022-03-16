@@ -88,6 +88,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                               child: Icon(Icons.email),
                                             ),
                                             hintText: 'أدخل الإيميل',
+                                            hintStyle: TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'ReadexPro',
+                                            ),
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               vertical: 10,
@@ -155,6 +159,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                               child: Icon(Icons.lock),
                                             ),
                                             hintText: 'أدخل كلمة السر',
+                                            hintStyle: TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'ReadexPro',
+                                            ),
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               vertical: 10,
@@ -350,8 +358,8 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
 
   late int _selectedIndex = 8;
   List<String> _options = [
-    '۲',
-    '۳',
+    '٢',
+    '٣ ',
     '٤',
     '٥',
     '٦',
@@ -365,7 +373,10 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
     for (int i = 0; i < _options.length; i++) {
       ChoiceChip choiceChip = ChoiceChip(
         selected: _selectedIndex == i,
-        label: Text(_options[i], style: TextStyle(color: Colors.white)),
+        label: Text(_options[i], style: TextStyle(
+          color: Colors.white,
+          fontFamily: 'ReadexPro',
+          )),
         elevation: 3,
         pressElevation: 5,
         backgroundColor: Colors.grey[500],
@@ -449,7 +460,7 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
                               child: SingleChildScrollView(
                                 child: Padding(
                                   padding:
-                                      const EdgeInsets.symmetric(vertical: 35),
+                                      const EdgeInsets.symmetric(vertical: 42),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -471,6 +482,10 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
                                             fillColor: Colors.white60,
                                             filled: true,
                                             hintText: ' اسم طفلك',
+                                            hintStyle: TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'ReadexPro',
+                                            ),
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               vertical: 10,
@@ -502,18 +517,19 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 7),
+                                      SizedBox(height: 10),
                                       Text(
                                         "عمر طفلك",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 17,
-                                          fontWeight: FontWeight.bold,
+                                          // fontWeight: FontWeight.bold,
+                                          fontFamily: 'ReadexPro',
                                         ),
                                       ),
-                                      SizedBox(height: 4),
+                                      SizedBox(height: 8),
                                       _buildChips(),
-                                      SizedBox(height: 9),
+                                      SizedBox(height: 11),
                                       Column(
                                         children: [
                                           MyButton(
@@ -582,7 +598,7 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
                         Align(
                           alignment: Alignment.center,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 20),
                             child: BlurryContainer(
                               borderRadius: BorderRadius.circular(100),
                               bgColor: Colors.lime.shade50,
@@ -596,7 +612,7 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
                         Align(
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 0),
-                            width: 100,
+                            width: 110,
                             child: Image.asset('images/logo.PNG'),
                           ),
                         ),
@@ -696,9 +712,10 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 20,
-                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'ReadexPro',
                                         ),
                                       ),
+                                      SizedBox(height: 10),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -737,7 +754,12 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                             const EdgeInsets
                                                                     .symmetric(
                                                                 vertical: 3),
-                                                        child: Text('ولد'),
+                                                        child: Text(
+                                                          'ولد', 
+                                                         style: TextStyle(
+                                              fontFamily: 'ReadexPro',
+                                                         ),
+                                                          ),
                                                       ),
                                                     ],
                                                   ),
@@ -745,7 +767,7 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(width: 10),
+                                          SizedBox(width: 14),
                                           Container(
                                             child: GestureDetector(
                                               onTap: () =>
@@ -780,7 +802,11 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                             const EdgeInsets
                                                                     .symmetric(
                                                                 vertical: 5),
-                                                        child: Text('بنت'),
+                                                        child: Text('بنت',
+                                                        style: TextStyle(
+                                              fontFamily: 'ReadexPro',
+                                                         ),
+                                                          ),
                                                       ),
                                                     ],
                                                   ),

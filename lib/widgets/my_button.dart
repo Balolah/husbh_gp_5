@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:nice_buttons/nice_buttons.dart';
@@ -24,13 +23,13 @@ class MyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 0,
-        horizontal: 150,
+        horizontal: 155,
       ),
       child: NiceButtons(
         startColor: startColor,
         endColor: endColor,
         borderColor: borderColor,
-        height: 50,
+        height: 42,
         stretch: true,
         gradientOrientation: GradientOrientation.Horizontal,
         onTap: (finish) {
@@ -39,7 +38,8 @@ class MyButton extends StatelessWidget {
         child: Text(
           title,
           style: TextStyle(
-              color: textColor, fontSize: 18, fontWeight: FontWeight.bold),
+              color: textColor, fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'ReadexPro',
+                                            ),
         ),
       ),
     );
