@@ -29,7 +29,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
       final user = _auth.currentUser;
       if (user != null) {
         signedInUser = user;
-        print(signedInUser.email);
+        print(signedInUser.email); // here I read the email of the current user 
       }
     } catch (e) {
       print(e);

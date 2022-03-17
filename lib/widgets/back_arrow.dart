@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class BackArrow extends StatefulWidget {
   const BackArrow({ Key? key }) : super(key: key);
@@ -21,6 +22,8 @@ class _BackArrowState extends State<BackArrow> {
       child: InkWell(
         splashColor: Colors.amber, // splash color
         onTap: () {
+          // final player = AudioCache();
+          //                                player.play('assets/clickButton.mp3');
          Navigator.pop(context);
         }, // button pressed
         child: Column(
