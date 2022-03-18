@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:better_player/better_player.dart';
 import 'package:flutter/services.dart';
+import 'package:husbh_app/screens/home_page_screen.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoScreen extends StatefulWidget {
@@ -25,6 +27,14 @@ class _VideoScreenState extends State<VideoScreen> {
     _controller.setLooping(true);
     _controller.setVolume(0.0);
     _controller.play();
+    Timer(Duration(seconds: 10), // change seconds to each video seconds
+          ()=>Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder:
+                                                          (context) => 
+                                                          HomePageScreen(), // change to math qustions page
+                                                         )
+                                       )
+         );
  }
 
 @override

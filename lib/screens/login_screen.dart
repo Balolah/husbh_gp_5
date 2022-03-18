@@ -236,7 +236,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                             if (_pass.text.length > 0 &&
                                                 _email.text.length > 0 &&
                                                 check == true) {
-                                                  
+                                                  print('Done');
+                                              await FirebaseAuth.instance
+                                                  .signInWithEmailAndPassword(
+                                                      email: _email.text,
+                                                      password: _pass.text);
+    
+                                              Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HomePageScreen()),
+                                              );
+                                              
+                                            } else {
                                               AwesomeDialog(
                                                 //if there is missing info this will be displayed
                                                 context: context,
@@ -255,19 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     'البريد الإلكتروني أو كلمة السر غير صحيحة',
                                                 showCloseIcon: true,
                                               ).show();
-                                            } else {
-                                              print('Done');
-                                              await FirebaseAuth.instance
-                                                  .signInWithEmailAndPassword(
-                                                      email: _email.text,
-                                                      password: _pass.text);
-    
-                                              Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        HomePageScreen()),
-                                              );
+                                              
                                             }
                                           },
                                           startColor: Colors.amber,
@@ -300,7 +301,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               );
                                             },
                                             child: const Text(
-                                              'أنشأ حسابًا الآن',
+                                              'سجل الآن',
                                               style: TextStyle(
                                                 fontSize: 11,
                                                 fontFamily: 'ReadexPro',
