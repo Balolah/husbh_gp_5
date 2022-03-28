@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:husbh_app/screens/home_page.dart';
 import '../widgets/check_if_email_used.dart';
 import '../widgets/my_button.dart';
 import 'home_page_screen.dart';
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Directionality(
-            textDirection: TextDirection.rtl,
+      textDirection: TextDirection.rtl,
       child: Scaffold(
         body: Stack(
           children: [
@@ -60,7 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Stack(
                       children: [
-                        
                         Center(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -103,7 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                               fontSize: 15,
                                               fontFamily: 'ReadexPro',
                                             ),
-                                            contentPadding: EdgeInsets.symmetric(
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
                                               vertical: 10,
                                               horizontal: 20,
                                             ),
@@ -173,7 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                               fontSize: 15,
                                               fontFamily: 'ReadexPro',
                                             ),
-                                            contentPadding: EdgeInsets.symmetric(
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
                                               vertical: 10,
                                               horizontal: 20,
                                             ),
@@ -231,24 +233,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   ).show()
                                                 : //else
                                                 print('Successfull');
-                                            bool check = await checkIfEmailInUse(
-                                                _email.text);
+                                            bool check =
+                                                await checkIfEmailInUse(
+                                                    _email.text);
                                             if (_pass.text.length > 0 &&
                                                 _email.text.length > 0 &&
                                                 check == true) {
-                                                  print('Done');
+                                              print('Done');
                                               await FirebaseAuth.instance
                                                   .signInWithEmailAndPassword(
                                                       email: _email.text,
                                                       password: _pass.text);
-    
+
                                               Navigator.pushReplacement(
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HomePageScreen()),
+                                                        home_page()),
                                               );
-                                              
                                             } else {
                                               AwesomeDialog(
                                                 //if there is missing info this will be displayed
@@ -268,7 +270,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     'البريد الإلكتروني أو كلمة السر غير صحيحة',
                                                 showCloseIcon: true,
                                               ).show();
-                                              
                                             }
                                           },
                                           startColor: Colors.amber,

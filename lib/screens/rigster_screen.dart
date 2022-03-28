@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:husbh_app/screens/home_page.dart';
 import '../widgets/back_arrow.dart';
 import '../widgets/check_if_email_used.dart';
 import '../widgets/my_button.dart';
@@ -219,8 +220,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                 showCloseIcon: true,
                                               ).show();
                                             } // end of if (_email.text == '' ||  _pass.text == '')
-                                            
-                                             else {
+
+                                            else {
                                               if (_pass.text.length < 6) {
                                                 AwesomeDialog(
                                                   //if there is missing info this will be displayed
@@ -253,17 +254,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                           email: _email.text,
                                                           password: _pass.text);
                                                   Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          RegistrationScreenSecond(
-                                                            em: _email.text,
-                                                            pass: _pass.text,
-                                                          )),
-                                                );
-                                                  
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            RegistrationScreenSecond(
+                                                              em: _email.text,
+                                                              pass: _pass.text,
+                                                            )),
+                                                  );
                                                 } // end of if check == false --> not used
-                                                 else {
+                                                else {
                                                   AwesomeDialog(
                                                     //if there is missing info this will be displayed
                                                     context: context,
@@ -285,8 +285,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                     showCloseIcon: true,
                                                   ).show();
                                                 }
-                                               
-                                              };
+                                              }
+                                              ;
                                             }
                                           },
                                           startColor: Colors.amber,
@@ -373,10 +373,11 @@ class _RegistrationScreenSecondState extends State<RegistrationScreenSecond> {
     for (int i = 0; i < _options.length; i++) {
       ChoiceChip choiceChip = ChoiceChip(
         selected: _selectedIndex == i,
-        label: Text(_options[i], style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'ReadexPro',
-          )),
+        label: Text(_options[i],
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'ReadexPro',
+            )),
         elevation: 3,
         pressElevation: 5,
         backgroundColor: Colors.grey[500],
@@ -755,11 +756,12 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                                     .symmetric(
                                                                 vertical: 3),
                                                         child: Text(
-                                                          'ولد', 
-                                                         style: TextStyle(
-                                              fontFamily: 'ReadexPro',
-                                                         ),
+                                                          'ولد',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'ReadexPro',
                                                           ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -802,11 +804,13 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                             const EdgeInsets
                                                                     .symmetric(
                                                                 vertical: 5),
-                                                        child: Text('بنت',
-                                                        style: TextStyle(
-                                              fontFamily: 'ReadexPro',
-                                                         ),
+                                                        child: Text(
+                                                          'بنت',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'ReadexPro',
                                                           ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -864,7 +868,7 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          HomePageScreen()));
+                                                          home_page()));
                                             }
                                             ;
                                           },
