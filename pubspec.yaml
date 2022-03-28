@@ -71,6 +71,7 @@ flutter:
   assets:
     - images/
     - assets/Rabbit.mp4
+    - assets/
 
   
   
