@@ -9,6 +9,7 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:husbh_app/screens/profile.dart';
 
 //import whats needed for styling & properties
 import 'package:nice_buttons/nice_buttons.dart';
@@ -102,11 +103,11 @@ class _homepageState extends State<home_page> {
                         GestureDetector(
                           //navigate to profile page
                           onTap: () {
-                            /*Navigator.push(
+                            Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => profilepage()),
+                          MaterialPageRoute(builder: (context) => ProfilePage()),
                         );
-                      */
+                      
                           },
 
                           child: Container(
@@ -134,11 +135,10 @@ class _homepageState extends State<home_page> {
                         //fetch user name & text as button to navigate to profile page
                         TextButton(
                             onPressed: () {
-                              /* Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => profilepage()));
-                        */
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProfilePage()));
                             },
                             child: Text(
                               '$name'.toString(), //in arabic
