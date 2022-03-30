@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import './Questions.dart';
-import './widgets/question_widget.dart';
-import './widgets/next_button.dart';
-import './widgets/option_card.dart';
+import 'Questions.dart';
+import '../widgets/question_widget.dart';
+import '../widgets/next_button.dart';
+import '../widgets/option_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Center(
                     child: index < 2
                         ? Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
+                            padding: const EdgeInsets.only(top: 40.0),
                             child: QuestionWidget(
                               indexAction: index,
                               question: _questions[index].title,
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         : 2 <= index && index <= 5
                             ? Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
-                                // padding: const EdgeInsets.only(bottom: 20.0),
+                                // padding: const EdgeInsets.only(bottom: 8.0),
                                 child: QuestionWidget(
                                   indexAction: index,
                                   question: _questions[index].title,
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Image(
                             image: AssetImage(imageExists()),
                             width: 500,
-                            height: 170,
+                            height: 250,
                             // width: 500,
                             // height: 250,
                           )
@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Image(
                                   image: AssetImage(imageExists()),
                                   width: 350,
-                                  height: 151,
+                                  height: 250,
                                   // width: 350,
                                   // height: 250,
                                 ),

@@ -6,7 +6,7 @@ import 'package:video_player/video_player.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../home_screen.dart';
+import 'home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,7 +83,7 @@ class _VideoAppState extends State<additionVideo> {
                 //Navigate to the questions page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
                 _controller
                     .pause(); //stop the video when naviagte to the question page
@@ -98,7 +98,9 @@ class _VideoAppState extends State<additionVideo> {
                       fontWeight: FontWeight.bold))),
         ),
       ],
-    ));
+    ),
+     debugShowCheckedModeBanner: false,
+     );
   }
 
   @override

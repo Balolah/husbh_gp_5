@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import '../home_screen.dart';
+import 'home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:better_player/better_player.dart';
 import 'package:flutter/services.dart';
