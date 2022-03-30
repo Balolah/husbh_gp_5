@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePageScreen extends StatefulWidget {
+  const HomePageScreen({Key? key}) : super(key: key);
+
   @override
   State<HomePageScreen> createState() => _HomePageScreenState();
 }
@@ -30,28 +32,18 @@ class _HomePageScreenState extends State<HomePageScreen> {
       final user = _auth.currentUser;
       if (user != null) {
         signedInUser = user;
-        print(signedInUser.email); // here I read the email of the current user 
+        print(signedInUser.email); // here I read the email of the current user
       }
     } catch (e) {
       print(e);
     }
   }
 
-
-
- 
-
-
   @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-body: Container(
-        
-
-
-),
-
+      body: Container(),
     );
   }
 }

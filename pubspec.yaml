@@ -73,10 +73,8 @@ flutter:
     - images/
     - assets/Rabbit.mp4
     - images/divide.png
-    - assets/
-    
+    - assets/ 
 
-  
   
   fonts:
     - family: ReadexPro

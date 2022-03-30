@@ -1,8 +1,12 @@
 //import needed libraries
+import 'dart:async';
+
+import 'package:husbh_app/screens/profile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +15,10 @@ void main() {
   runApp(additionVideo());
 }
 
+// ignore: camel_case_types
 class additionVideo extends StatefulWidget {
+  const additionVideo({Key? key}) : super(key: key);
+
   @override
   _VideoAppState createState() => _VideoAppState();
 }
@@ -29,13 +36,13 @@ class _VideoAppState extends State<additionVideo> {
         _controller.play(); //play the video
 
         //nevigate to the question page when the video is finish
-        /* Timer(
-             Duration(seconds: 38),
-             () => Navigator.pushReplacement(
-                 context,
-                 MaterialPageRoute(
-                   builder: (context) =>  QuestionPage(),
-                 ))); */
+        Timer(
+            Duration(seconds: 38),
+            () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomeScreen(),
+                )));
 
         setState(() {});
       });
@@ -72,14 +79,14 @@ class _VideoAppState extends State<additionVideo> {
               height: 60,
               borderRadius: 60,
               gradientOrientation: GradientOrientation.Horizontal,
-              onTap: (finish) {
+              onTap: () {
                 //Navigate to the questions page
-                /* Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => QuestionPage()),
-                 );
-                 _controller.pause(); //stop the video when naviagte to the question page
-                 */
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+                _controller
+                    .pause(); //stop the video when naviagte to the question page
               },
               child: Text('تخطي',
                   textAlign: TextAlign.center,
