@@ -95,212 +95,137 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (context, snapshot) {
           return FutureBuilder(
               future: getData(),
-              builder: (context, snapshot) =>
-                  snapshot.connectionState == ConnectionState.waiting
-                      ? Scaffold(
-                          body: Stack(
-                            children: [
-                              Container(
-                                width: MediaQuery.maybeOf(context)?.size.width,
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).canvasColor,
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(30),
-                                        bottomLeft: Radius.circular(30))),
-                                // child: Text("plase wait")
-                              ),
-                              WaitingScreen(),
-                            ],
+              builder: (context, snapshot) => snapshot.connectionState ==
+                      ConnectionState.waiting
+                  ? Scaffold(
+                      body: Stack(
+                        children: [
+                          Container(
+                            width: MediaQuery.maybeOf(context)?.size.width,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).canvasColor,
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(30),
+                                    bottomLeft: Radius.circular(30))),
+                            // child: Text("plase wait")
                           ),
-                        )
+                          WaitingScreen(),
+                        ],
+                      ),
+                    )
 
-                      //  MaterialApp(
-                      //   debugShowCheckedModeBanner: false,//تشيل الخط الاحمر
-                      //   home:
-                      : Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: Scaffold(
-                              backgroundColor: Colors.amber,
-                              extendBodyBehindAppBar: true,
-                              appBar: AppBar(
-                                centerTitle: true,
-                                title: Padding(
-                                  padding: EdgeInsets.only(left: 330),
-                                  // child: Text(
-                                  //   'الملف الشخصي',
-                                  //   style: TextStyle(
-                                  //       color:
-                                  //           Colors.black26,
-                                  //       fontSize: 25,
-                                  //       fontFamily: 'ReadexPro',
-                                  //       fontWeight: FontWeight.w700),
-                                  // ),
+                  //  MaterialApp(
+                  //   debugShowCheckedModeBanner: false,//تشيل الخط الاحمر
+                  //   home:
+                  : Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Scaffold(
+                          backgroundColor: Colors.amber,
+                          extendBodyBehindAppBar: true,
+                          appBar: AppBar(
+                            centerTitle: true,
+                            title: Padding(
+                              padding: EdgeInsets.only(left: 330),
+                              // child: Text(
+                              //   'الملف الشخصي',
+                              //   style: TextStyle(
+                              //       color:
+                              //           Colors.black26,
+                              //       fontSize: 25,
+                              //       fontFamily: 'ReadexPro',
+                              //       fontWeight: FontWeight.w700),
+                              // ),
+                            ),
+                            leading: IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: Icon(Icons.arrow_back_ios),
+                              color: Color(0xff4A4857),
+                            ),
+                            elevation: 0,
+                            backgroundColor: Colors.amber[300],
+                          ), //c
+                          body: Stack(
+                            children: <Widget>[
+                              Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(40),
+                                    topRight: Radius.circular(40),
+                                  ),
                                 ),
-                                leading: IconButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  icon: Icon(Icons.arrow_back_ios),
-                                  color: Color(0xff4A4857),
-                                ),
-                                elevation: 0,
-                                backgroundColor: Colors.amber[300],
-                              ), //c
-                              body: Stack(
-                                children: <Widget>[
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(40),
-                                        topRight: Radius.circular(40),
-                                      ),
-                                    ),
-                                    height: double.infinity,
-                                    child: Row(
-                                      children: [
-                                        SizedBox(width: 20, height: 20),
-                                        Expanded(
-                                          child: Container(
-                                            //width: MediaQuery.of(context).size.width / 2,
-                                            child: Column(
+                                height: double.infinity,
+                                child: Row(
+                                  children: [
+                                    SizedBox(width: 20, height: 20),
+                                    Expanded(
+                                      child: Container(
+                                        //width: MediaQuery.of(context).size.width / 2,
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              //mainAxisAlignment: MainAxisAlignment.start,
                                               children: [
-                                                Row(
-                                                  //mainAxisAlignment: MainAxisAlignment.start,
-                                                  children: [
-                                                    //SizedBox(width: 50, height: 50),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 45),
-                                                      width: 130,
-                                                      height: 130,
-                                                      decoration: BoxDecoration(
-                                                          image:
-                                                              DecorationImage(
-                                                            image: sex == "boy"
-                                                                ? AssetImage(
-                                                                    "images/husbh_boy.png")
-                                                                : AssetImage(
-                                                                    "images/husbh_girl.png"),
-                                                            scale: 0.02,
-                                                          ),
-                                                          border: Border.all(
-                                                            // color:
-                                                            //     Color.fromARGB(
-                                                            //         255,
-                                                            //         248,
-                                                            //         240,
-                                                            //         170),
-                                                            color: Colors.amber.shade200,
-                                                            width: 2,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              // color: Colors
-                                                              //     .yellow
-                                                              //     .shade100,
-                                                              color: Colors.amber.shade300,
-                                                            )
-                                                          ]),
-                                                    ),
-                                                    Container(
-                                                      //color: Colors.black,
-                                                      margin: EdgeInsets.only(
-                                                          top: 30),
-                                                      // padding: EdgeInsets.only(left: 130),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
+                                                //SizedBox(width: 50, height: 50),
+                                                Container(
+                                                  margin:
+                                                      EdgeInsets.only(top: 45),
+                                                  width: 130,
+                                                  height: 130,
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                        image: sex == "boy"
+                                                            ? AssetImage(
+                                                                "images/husbh_boy.png")
+                                                            : AssetImage(
+                                                                "images/husbh_girl.png"),
+                                                        scale: 0.02,
+                                                      ),
+                                                      border: Border.all(
+                                                        // color:
+                                                        //     Color.fromARGB(
+                                                        //         255,
+                                                        //         248,
+                                                        //         240,
+                                                        //         170),
+                                                        color: Colors
+                                                            .amber.shade200,
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          // color: Colors
+                                                          //     .yellow
+                                                          //     .shade100,
+                                                          color: Colors
+                                                              .amber.shade300,
+                                                        )
+                                                      ]),
+                                                ),
+                                                Container(
+                                                  //color: Colors.black,
+                                                  margin:
+                                                      EdgeInsets.only(top: 30),
+                                                  // padding: EdgeInsets.only(left: 130),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      //SizedBox(width: 30, height: 30),
+                                                      Column(
                                                         children: [
-                                                          //SizedBox(width: 30, height: 30),
-                                                          Column(
-                                                            children: [
-                                                              SizedBox(
-                                                                  width: 20,
-                                                                  height: 20),
-                                                              Container(
-                                                                height: 30,
-                                                                width: 250,
-                                                                margin:
-                                                                    EdgeInsets
-                                                                        .all(7),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                        border: Border
-                                                                            .all(
-                                                                          // color: Color.fromARGB(
-                                                                          //     255, 214, 212, 214),
-                                                                          color: Colors
-                                                                              .grey
-                                                                              .shade300,
-                                                                          width:
-                                                                              2,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(20),
-                                                                        boxShadow: [
-                                                                      BoxShadow(
-                                                                        color: Colors
-                                                                            .grey
-                                                                            .shade100,
-                                                                      )
-                                                                    ]),
-                                                                child: Row(
-                                                                  //mainAxisAlignment:
-                                                                  // MainAxisAlignment.center,
-                                                                  children: [
-                                                                    SizedBox(
-                                                                        width:
-                                                                            20,
-                                                                        height:
-                                                                            20),
-                                                                    Text(
-                                                                      "  الاسم : ",
-                                                                      style: TextStyle(
-                                                                          fontFamily: 'ReadexPro',
-                                                                          // background:
-                                                                          color: Colors.brown,
-                                                                          fontSize: 15,
-                                                                          fontWeight: FontWeight.w800),
-                                                                      softWrap:
-                                                                          false,
-                                                                      maxLines:
-                                                                          1,
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                    ),
-                                                                    Text(
-                                                                      name,
-                                                                      style: TextStyle(
-                                                                          color: Colors
-                                                                              .brown,
-                                                                          fontSize:
-                                                                              15,
-                                                                          fontFamily:
-                                                                              'ReadexPro',
-                                                                          fontWeight:
-                                                                              FontWeight.w700),
-                                                                      softWrap:
-                                                                          false,
-                                                                      maxLines:
-                                                                          1,
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
+                                                          SizedBox(
+                                                              width: 20,
+                                                              height: 20),
                                                           Container(
-                                                            width: 250,
                                                             height: 30,
+                                                            width: 250,
                                                             margin:
                                                                 EdgeInsets.all(
                                                                     7),
@@ -309,64 +234,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                                     border:
                                                                         Border
                                                                             .all(
-                                                                      color: Colors
-                                                                          .grey
-                                                                          .shade300,
-                                                                      width: 2,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            20),
-                                                                    boxShadow: [
-                                                                  BoxShadow(
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade100,
-                                                                  )
-                                                                ]),
-                                                            child: Row(
-                                                              children: [
-                                                                SizedBox(
-                                                                    width: 20,
-                                                                    height: 20),
-                                                                Text(
-                                                                  " العمر: ",
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .brown,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontFamily:
-                                                                          'ReadexPro',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                ),
-                                                                Text(age,
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .brown,
-                                                                        fontSize:
-                                                                            15,
-                                                                        fontFamily:
-                                                                            'ReadexPro',
-                                                                        fontWeight:
-                                                                            FontWeight.w700))
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            width: 250,
-                                                            height: 30,
-                                                            margin:
-                                                                EdgeInsets.all(
-                                                                    7),
-                                                            decoration:
-                                                                BoxDecoration(
-                                                                    //shape: BoxShape.rectangle,
-                                                                    border:
-                                                                        Border
-                                                                            .all(
+                                                                      // color: Color.fromARGB(
+                                                                      //     255, 214, 212, 214),
                                                                       color: Colors
                                                                           .grey
                                                                           .shade300,
@@ -384,13 +253,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                                                 ]),
                                                             child: Row(
                                                               //mainAxisAlignment:
-                                                              //  MainAxisAlignment.start,
+                                                              // MainAxisAlignment.center,
                                                               children: [
                                                                 SizedBox(
                                                                     width: 20,
                                                                     height: 20),
                                                                 Text(
-                                                                  " الايميل : ",
+                                                                  "  الاسم : ",
+                                                                  style: TextStyle(
+                                                                      fontFamily: 'ReadexPro',
+                                                                      // background:
+                                                                      color: Colors.brown,
+                                                                      fontSize: 15,
+                                                                      fontWeight: FontWeight.w800),
+                                                                  softWrap:
+                                                                      false,
+                                                                  maxLines: 1,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                ),
+                                                                Text(
+                                                                  name,
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .brown,
@@ -401,101 +285,218 @@ class _ProfilePageState extends State<ProfilePage> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w700),
+                                                                  softWrap:
+                                                                      false,
+                                                                  maxLines: 1,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
                                                                 ),
-                                                                Text(email,
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .brown,
-                                                                        fontSize:
-                                                                            15,
-                                                                        fontFamily:
-                                                                            'ReadexPro',
-                                                                        fontWeight:
-                                                                            FontWeight.w700))
                                                               ],
                                                             ),
-                                                          ),
+                                                          )
                                                         ],
                                                       ),
-                                                    ),
-                                                  ],
+                                                      Container(
+                                                        width: 250,
+                                                        height: 30,
+                                                        margin:
+                                                            EdgeInsets.all(7),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                border:
+                                                                    Border.all(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade300,
+                                                                  width: 2,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                                boxShadow: [
+                                                              BoxShadow(
+                                                                color: Colors
+                                                                    .grey
+                                                                    .shade100,
+                                                              )
+                                                            ]),
+                                                        child: Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 20,
+                                                                height: 20),
+                                                            Text(
+                                                              " العمر: ",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .brown,
+                                                                  fontSize: 15,
+                                                                  fontFamily:
+                                                                      'ReadexPro',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700),
+                                                            ),
+                                                            Text(age,
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .brown,
+                                                                    fontSize:
+                                                                        15,
+                                                                    fontFamily:
+                                                                        'ReadexPro',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700))
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: 250,
+                                                        height: 30,
+                                                        margin:
+                                                            EdgeInsets.all(7),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                //shape: BoxShape.rectangle,
+                                                                border:
+                                                                    Border.all(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade300,
+                                                                  width: 2,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                                boxShadow: [
+                                                              BoxShadow(
+                                                                color: Colors
+                                                                    .grey
+                                                                    .shade100,
+                                                              )
+                                                            ]),
+                                                        child: Row(
+                                                          //mainAxisAlignment:
+                                                          //  MainAxisAlignment.start,
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 20,
+                                                                height: 20),
+                                                            Text(
+                                                              " الايميل : ",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .brown,
+                                                                  fontSize: 15,
+                                                                  fontFamily:
+                                                                      'ReadexPro',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700),
+                                                            ),
+                                                            Text(email,
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .brown,
+                                                                    fontSize:
+                                                                        15,
+                                                                    fontFamily:
+                                                                        'ReadexPro',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700))
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                                SizedBox(width: 10, height: 10),
-                                                MyButton(
-                                                    startColor: Colors.amber,
-                                                    endColor:
-                                                        Colors.amber.shade400,
-                                                    borderColor: Color.fromARGB(
-                                                        255, 231, 162, 0),
-                                                    textColor:
-                                                        Colors.brown.shade600,
-                                                    title: 'تسجيل خروج',
-                                                    onPressed: () {
-                                                      AwesomeDialog(
-                                                        //if there is missing info this will be displayed
-                                                        context: context,
-                                                        dialogType:
-                                                            DialogType.WARNING,
-                                                        borderSide: BorderSide(
-                                                            color: Colors.green,
-                                                            width: 2),
-                                                        width: 280,
-
-                                                        buttonsBorderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    2)),
-                                                        headerAnimationLoop:
-                                                            false,
-                                                        animType: AnimType
-                                                            .BOTTOMSLIDE,
-                                                        title: 'تسجيل خروج',
-                                                        btnCancelText: "إلغاء",
-                                                        btnOkText: "نعم",
-                                                        desc: 'هل أنت متأكد؟',
-                                                        btnCancelOnPress: () {},
-                                                        btnOkOnPress: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        LoginScreen()),
-                                                          );
-                                                        },
-                                                        showCloseIcon: true,
-                                                      ).show();
-                                                    }),
                                               ],
                                             ),
-                                            //الي فيه الصوه
+                                            SizedBox(width: 10, height: 10),
+                                            MyButton(
+                                                startColor: Colors.amber,
+                                                endColor: Colors.amber.shade400,
+                                                borderColor: Color.fromARGB(
+                                                    255, 231, 162, 0),
+                                                textColor:
+                                                    Colors.brown.shade600,
+                                                title: 'تسجيل خروج',
+                                                onPressed: () {
+                                                  AwesomeDialog(
+                                                    //if there is missing info this will be displayed
+                                                    context: context,
+                                                    dialogType:
+                                                        DialogType.WARNING,
+                                                    borderSide: BorderSide(
+                                                        color: Colors.green,
+                                                        width: 2),
+                                                    width: 280,
 
-                                            //color: Colors.red,
-                                            margin: EdgeInsets.only(top: 50),
-                                            height: 300,
-                                          ),
+                                                    buttonsBorderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(2)),
+                                                    headerAnimationLoop: false,
+                                                    animType:
+                                                        AnimType.BOTTOMSLIDE,
+                                                    title: 'تسجيل خروج',
+                                                    btnCancelText: "إلغاء",
+                                                    btnOkText: "نعم",
+                                                    desc: 'هل أنت متأكد؟',
+                                                    btnCancelOnPress: () {},
+                                                    btnOkOnPress: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                LoginScreen()),
+                                                      );
+                                                    },
+                                                    showCloseIcon: true,
+                                                  ).show();
+                                                }),
+                                          ],
                                         ),
-                                        Expanded(
-                                          //  الي على اليمين الجهه
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              color: Colors.grey[100],
-                                            ),
+                                        //الي فيه الصوه
 
-                                            width: 270,
-                                            height: 180,
+                                        //color: Colors.red,
+                                        margin: EdgeInsets.only(top: 50),
+                                        height: 300,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      //  الي على اليمين الجهه الرصاصي
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 100,
+                                          bottom: 60,
+                                        ),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color: Colors.grey[100],
+                                          ),
 
-                                            // alignment: Alignment.center,
+                                          width: 180,
+                                          height: 180,
 
-                                            child: SingleChildScrollView(
+                                          // alignment: Alignment.center,
+
+                                          child: SingleChildScrollView(
+                                            child: Center(
                                               child: Row(children: [
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.only(
                                                       right: 40,
+                                                      // right: 25,
+                                                      // left: 40,
                                                     ),
                                                     child: Column(
                                                       children: [
@@ -508,12 +509,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                                           child: Text(
                                                             'أدائي',
                                                             style: TextStyle(
-                                                              fontSize: 24,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                                      color: Colors.brown
-                                                            ),
+                                                                fontSize: 24,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .brown),
                                                           ),
                                                         ),
                                                         Padding(
@@ -770,17 +771,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 // حق الباتون الي تحت
                                               ]),
                                             ),
-                                            margin: EdgeInsets.only(
-                                                top: 80, left: 20),
-                                            //width: MediaQuery.of(context).size.width / 2,
                                           ),
+                                          margin: EdgeInsets.only(
+                                              top: 80, left: 20),
+                                          //width: MediaQuery.of(context).size.width / 2,
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              )),
-                        ));
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )),
+                    ));
         });
   }
 }

@@ -11,6 +11,7 @@ import 'package:husbh_app/screens/profile.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 
 //import project's files
+import 'WaitingScreen.dart';
 import 'addition_video.dart';
 
 void main() async {
@@ -66,7 +67,7 @@ class _learnpageState extends State<learn_page> {
         name = doc['name'];
         age = doc['age'];
         sex = doc['sex'];
-        print(doc['name']); //might delete
+        print(doc['name']);
       }
     });
   }
@@ -85,7 +86,7 @@ class _learnpageState extends State<learn_page> {
                   ),
 
                   //Waiting screen
-                  //WaitingScreen()
+                  WaitingScreen()
                 ],
               ))
             : Scaffold(
@@ -157,11 +158,10 @@ class _learnpageState extends State<learn_page> {
                     //fetch user name & text as button to navigate to profile page
                     TextButton(
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => profilepage()));
-                        */
+                                  builder: (context) => ProfilePage()));
                         },
                         child: Text(
                           '$name'.toString(), //in arabic

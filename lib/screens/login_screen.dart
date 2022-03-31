@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:husbh_app/screens/home_page.dart';
 import '../widgets/check_if_email_used.dart';
 import '../widgets/my_button.dart';
-import 'home_page_screen.dart';
 import 'rigster_screen.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../widgets/back_arrow.dart';

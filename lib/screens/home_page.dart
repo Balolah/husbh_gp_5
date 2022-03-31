@@ -15,6 +15,7 @@ import 'package:husbh_app/screens/profile.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 
 //import project's files
+import 'WaitingScreen.dart';
 import 'learn_page.dart';
 
 class home_page extends StatefulWidget {
@@ -65,7 +66,7 @@ class _homepageState extends State<home_page> {
         name = doc['name'];
         age = doc['age'];
         sex = doc['sex'];
-        print(doc['name']); //might delete
+        print(doc['name']);
       }
     });
   }
@@ -80,12 +81,22 @@ class _homepageState extends State<home_page> {
             snapshot.connectionState == ConnectionState.waiting
                 ? Scaffold(
                     body: Stack(
-                    textDirection: TextDirection.rtl,
-
-                    //Waiting screen
-                    // WaitingScreen(),
-                  ))
+                      children: [
+                        Container(
+                          width: MediaQuery.maybeOf(context)?.size.width,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).canvasColor,
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(30),
+                                  bottomLeft: Radius.circular(30))),
+                          // child: Text("plase wait")
+                        ),
+                        WaitingScreen(),
+                      ],
+                    ),
+                  )
                 : Stack(//Stack for all components
+
                     children: [
                     //background
                     Container(
@@ -96,6 +107,7 @@ class _homepageState extends State<home_page> {
                         ),
                       ),
                     ),
+
 //profile image
                     Padding(
                       padding: const EdgeInsets.only(top: 30.0, right: 20.0),
@@ -104,10 +116,10 @@ class _homepageState extends State<home_page> {
                           //navigate to profile page
                           onTap: () {
                             Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ProfilePage()),
-                        );
-                      
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfilePage()),
+                            );
                           },
 
                           child: Container(
