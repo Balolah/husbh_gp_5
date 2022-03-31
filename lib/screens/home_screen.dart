@@ -4,6 +4,7 @@ import 'Questions.dart';
 import '../widgets/question_widget.dart';
 import '../widgets/next_button.dart';
 import '../widgets/option_card.dart';
+import 'learn_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -78,6 +79,25 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+
+void lastQuestion(){
+    Navigator.push(context, MaterialPageRoute(builder:(context)=>learn_page()));
+
+}
+/* void lastQuestion(){
+  Align(
+        alignment: Alignment.topRight,
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          
+           child : NextButton (
+             nextQuestion: nextQuestion,
+         
+      ),
+      ),
+        );
+       
+} */
 //returns the image of the current question
   String imageExists() {
     return _questions[index].image;
@@ -125,6 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Center(
                     child: index < 2
                         ? Padding(
+                          
                             padding: const EdgeInsets.only(top: 40.0),
                             child: QuestionWidget(
                               indexAction: index,
@@ -135,9 +156,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         : 2 <= index && index <= 5
                             ? Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
-                                // padding: const EdgeInsets.only(bottom: 8.0),
+                               
                                 child: QuestionWidget(
                                   indexAction: index,
+                                  
                                   question: _questions[index].title,
                                   totalQuestions: _questions.length,
                                 ),
@@ -202,7 +224,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               //await
                               await Future.delayed(const Duration(seconds: 1),
                                   () {
-                                nextQuestion();
+                                    if (index<5)
+                                   { 
+                                nextQuestion();}
+                                else 
+                                lastQuestion();
+                          
                               });
                             }),
                     ],
@@ -213,18 +240,41 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ]),
-
+ 
 //for the Next button
+//: Navigator.push(context, MaterialPageRoute(builder:(context)=>learn_page()),
+     floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Align(
         alignment: Alignment.topRight,
         child: Padding(
           padding: const EdgeInsets.all(30.0),
-          child: NextButton(
-            nextQuestion: nextQuestion,
-          ),
+          
+           child : Column(children:<Widget>[
+              
+             index<5?
+              NextButton (nextQuestion: nextQuestion):
+            // nextQuestion: lastQuestion
+      NextButton (nextQuestion: lastQuestion)
+           ])),
         ),
+        /* floatingActionButton: Align(
+        alignment: Alignment.topRight,
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          
+           child : NextButton (
+             
+             nextQuestion: lastQuestion
+         
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      ),
+        ),*/
+       
+     
+     //index<5?
+     //floatingActionButtonLocation: FloatingActionButtonLocation.startFloat
+
     );
   }
+    
 }

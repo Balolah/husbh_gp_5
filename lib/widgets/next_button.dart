@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class NextButton extends StatelessWidget {
-  const NextButton({Key? key, required this.nextQuestion}) : super(key: key);
+   const NextButton({Key? key, required this.nextQuestion}) : super(key: key);
   final VoidCallback nextQuestion;
 
   @override
