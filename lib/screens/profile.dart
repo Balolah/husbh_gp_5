@@ -471,8 +471,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Expanded(
                                       //  الي على اليمين الجهه الرصاصي
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 50,
+                                        padding: const EdgeInsets.only(
+                                          left: 100,
+                                          bottom: 60,
                                         ),
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -491,9 +492,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                               child: Row(children: [
                                                 Expanded(
                                                   child: Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 24,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      right: 40,
                                                       // right: 25,
                                                       // left: 40,
                                                     ),
