@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
+import '../Screens/home_page_screen.dart';
 import 'home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:better_player/better_player.dart';
 import 'package:flutter/services.dart';
-import 'package:husbh_app/screens/home_page_screen.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoScreen extends StatefulWidget {

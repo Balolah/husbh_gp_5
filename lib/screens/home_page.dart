@@ -81,11 +81,20 @@ class _homepageState extends State<home_page> {
             snapshot.connectionState == ConnectionState.waiting
                 ? Scaffold(
                     body: Stack(
-                    textDirection: TextDirection.rtl,
-
-                    //Waiting screen
-                    // WaitingScreen()
-                  ))
+                      children: [
+                        Container(
+                          width: MediaQuery.maybeOf(context)?.size.width,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).canvasColor,
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(30),
+                                  bottomLeft: Radius.circular(30))),
+                          // child: Text("plase wait")
+                        ),
+                        WaitingScreen(),
+                      ],
+                    ),
+                  )
                 : Stack(//Stack for all components
 
                     children: [
