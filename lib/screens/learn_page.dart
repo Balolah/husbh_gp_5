@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:husbh_app/screens/home_page.dart';
 import 'package:husbh_app/screens/profile.dart';
 
 //import whats needed for styling & properties
@@ -107,8 +108,10 @@ class _learnpageState extends State<learn_page> {
                     IconButton(
                       padding: EdgeInsets.all(23.0),
                       onPressed: () {
-                        Navigator.pop(
-                            context); //pop > return to the previous page (home page)
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => home_page()),
+                        );
                       },
                       //icon: Icon(Icons.arrow_back_ios),
                       icon: Icon(Icons.home_rounded),
