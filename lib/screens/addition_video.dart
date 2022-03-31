@@ -26,7 +26,7 @@ class additionVideo extends StatefulWidget {
 
 class _VideoAppState extends State<additionVideo> {
   late VideoPlayerController _controller; //the controller of the video player
-
+  late Timer timer; //timer for the video duration
   @override
   void initState() {
     super.initState();
@@ -37,7 +37,7 @@ class _VideoAppState extends State<additionVideo> {
         _controller.play(); //play the video
 
         //nevigate to the question page when the video is finish
-        Timer(
+        timer = Timer(
             Duration(seconds: 38),
             () => Navigator.pushReplacement(
                 context,
@@ -88,6 +88,7 @@ class _VideoAppState extends State<additionVideo> {
                   );
                   _controller
                       .pause(); //stop the video when naviagte to the questions page
+                  timer.cancel(); //canel the timer if the skip button is used
                 },
                 child: Text('تخطي',
                     textAlign: TextAlign.center,
@@ -108,5 +109,6 @@ class _VideoAppState extends State<additionVideo> {
   void dispose() {
     super.dispose();
     _controller.dispose();
+    timer.cancel(); //cancel the timer
   }
 }
