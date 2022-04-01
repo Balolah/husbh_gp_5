@@ -84,20 +84,7 @@ void lastQuestion(){
     Navigator.push(context, MaterialPageRoute(builder:(context)=>learn_page()));
 
 }
-/* void lastQuestion(){
-  Align(
-        alignment: Alignment.topRight,
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          
-           child : NextButton (
-             nextQuestion: nextQuestion,
-         
-      ),
-      ),
-        );
-       
-} */
+
 //returns the image of the current question
   String imageExists() {
     return _questions[index].image;
@@ -242,7 +229,7 @@ void lastQuestion(){
       ]),
  
 //for the Next button
-//: Navigator.push(context, MaterialPageRoute(builder:(context)=>learn_page()),
+
      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Align(
         alignment: Alignment.topRight,
@@ -257,23 +244,7 @@ void lastQuestion(){
       NextButton (nextQuestion: lastQuestion)
            ])),
         ),
-        /* floatingActionButton: Align(
-        alignment: Alignment.topRight,
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          
-           child : NextButton (
-             
-             nextQuestion: lastQuestion
-         
-      ),
-      ),
-        ),*/
-       
-     
-     //index<5?
-     //floatingActionButtonLocation: FloatingActionButtonLocation.startFloat
-
+        
     );
   }
     

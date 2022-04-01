@@ -161,12 +161,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                 height: double.infinity,
                                 child: Row(
                                   children: [
-                                    SizedBox(width: 20, height: 20),
+                                    SizedBox(width: 15, height: 15),
                                     Expanded(
                                       child: Container(
                                         // الكونتينر الجهه على اليمين 
                                        width: MediaQuery.of(context).size.width / 2,
-                                        margin: EdgeInsets.only(top: 50),
+                                        margin: EdgeInsets.only(top: 70),
                                         height:MediaQuery.of(context).size.height,
                                         child: Column(
                                           children: [
@@ -178,8 +178,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   // حق صورة البروفايل 
                                                   margin:
                                                       EdgeInsets.only(top: 45),
-                                                  width: 130,
-                                                  height: 130,
+                                                  width: 100,
+                                                  height: 100,
                                                   decoration: BoxDecoration(
                                                       image: DecorationImage(
                                                         image: sex == "boy"
@@ -427,48 +427,54 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(width: 10, height: 10),
-                                            MyButton(
-                                                startColor: Colors.amber,
-                                                endColor: Colors.amber.shade400,
-                                                borderColor: Color.fromARGB(
-                                                    255, 231, 162, 0),
-                                                textColor:
-                                                    Colors.brown.shade600,
-                                                title: 'تسجيل خروج',
-                                                onPressed: () {
-                                                  AwesomeDialog(
-                                                    //if there is missing info this will be displayed
-                                                    context: context,
-                                                    dialogType:
-                                                        DialogType.WARNING,
-                                                    borderSide: BorderSide(
-                                                        color: Colors.green,
-                                                        width: 2),
-                                                    width: 280,
+                                            //SizedBox(width: 100, height: 70),
+                                            
+                                            Padding(
+                                              //width: 20,
+                                             // height: 20,
+                                              padding: const EdgeInsets.only( right:0.0,top:60,left:0),
+                                              child: MyButton(
+                                                  startColor: Colors.amber,
+                                                  endColor: Colors.amber.shade400,
+                                                  borderColor: Color.fromARGB(
+                                                      255, 231, 162, 0),
+                                                  textColor:
+                                                      Colors.brown.shade600,
+                                                  title: 'تسجيل خروج',
+                                                  onPressed: () {
+                                                    AwesomeDialog(
+                                                      //if there is missing info this will be displayed
+                                                      context: context,
+                                                      dialogType:
+                                                          DialogType.WARNING,
+                                                      borderSide: BorderSide(
+                                                          color: Colors.green,
+                                                          width: 2),
+                                                      width: 280,
 
-                                                    buttonsBorderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(2)),
-                                                    headerAnimationLoop: false,
-                                                    animType:
-                                                        AnimType.BOTTOMSLIDE,
-                                                    title: 'تسجيل خروج',
-                                                    btnCancelText: "إلغاء",
-                                                    btnOkText: "نعم",
-                                                    desc: 'هل أنت متأكد؟',
-                                                    btnCancelOnPress: () {},
-                                                    btnOkOnPress: () {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                LoginScreen()),
-                                                      );
-                                                    },
-                                                    showCloseIcon: true,
-                                                  ).show();
-                                                }),
+                                                      buttonsBorderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(2)),
+                                                      headerAnimationLoop: false,
+                                                      animType:
+                                                          AnimType.BOTTOMSLIDE,
+                                                      title: 'تسجيل خروج',
+                                                      btnCancelText: "إلغاء",
+                                                      btnOkText: "نعم",
+                                                      desc: 'هل أنت متأكد؟',
+                                                      btnCancelOnPress: () {},
+                                                      btnOkOnPress: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  LoginScreen()),
+                                                        );
+                                                      },
+                                                      showCloseIcon: true,
+                                                    ).show();
+                                                  }),
+                                            ),
                                           ],
                                         ),
                                         //الي فيه الصوره
@@ -483,6 +489,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       
                                       child: Padding(
                                         padding: const EdgeInsets.only(
+                                        
                                          left: 10,//الي يحرك المربع الرصاصي 
                                            top: 30,// الي ينزله ويرقيه 
                                         ),
@@ -506,7 +513,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                      right: 60,
+                                                      right: 30,
                                                       // right: 25,
                                                       // left: 40,
                                                     ),
