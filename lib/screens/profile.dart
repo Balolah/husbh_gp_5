@@ -472,7 +472,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       //  الي على اليمين الجهه الرصاصي
                                       child: Padding(
                                         padding: const EdgeInsets.only(
-                                          left: 100,
+                                          left: 10,
                                           bottom: 60,
                                         ),
                                         child: Container(
@@ -482,8 +482,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                             color: Colors.grey[100],
                                           ),
 
-                                          width: 180,
-                                          height: 180,
+                                          width: 300,
+                                          height: 300,
 
                                           // alignment: Alignment.center,
 
@@ -504,7 +504,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                           padding:
                                                               const EdgeInsets
                                                                   .only(
-                                                            top: 24,
+                                                            top: 10,
                                                           ),
                                                           child: Text(
                                                             'أدائي',
@@ -773,7 +773,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             ),
                                           ),
                                           margin: EdgeInsets.only(
-                                              top: 80, left: 20),
+                                              top: 100, left: 20),
                                           //width: MediaQuery.of(context).size.width / 2,
                                         ),
                                       ),
