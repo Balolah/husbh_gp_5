@@ -89,6 +89,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     getData();
     return StreamBuilder<Object>(
         stream: FirebaseFirestore.instance.collection("users").snapshots(),
@@ -162,7 +164,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                     SizedBox(width: 20, height: 20),
                                     Expanded(
                                       child: Container(
-                                        //width: MediaQuery.of(context).size.width / 2,
+                                        // الكونتينر الجهه على اليمين 
+                                       width: MediaQuery.of(context).size.width / 2,
+                                        margin: EdgeInsets.only(top: 50),
+                                        height:MediaQuery.of(context).size.height,
                                         child: Column(
                                           children: [
                                             Row(
@@ -170,6 +175,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               children: [
                                                 //SizedBox(width: 50, height: 50),
                                                 Container(
+                                                  // حق صورة البروفايل 
                                                   margin:
                                                       EdgeInsets.only(top: 45),
                                                   width: 130,
@@ -224,6 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                               width: 20,
                                                               height: 20),
                                                           Container(
+                                                            //كونتينر الاسم 
                                                             height: 30,
                                                             width: 250,
                                                             margin:
@@ -298,6 +305,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                         ],
                                                       ),
                                                       Container(
+                                                        //كونتير العمر 
+                                                        // width: MediaQuery.of(context).size.width / 2,
                                                         width: 250,
                                                         height: 30,
                                                         margin:
@@ -354,6 +363,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                         ),
                                                       ),
                                                       Container(
+                                                        //كونتينر الايميل 
                                                         width: 250,
                                                         height: 30,
                                                         margin:
@@ -461,19 +471,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 }),
                                           ],
                                         ),
-                                        //الي فيه الصوه
+                                        //الي فيه الصوره
 
                                         //color: Colors.red,
-                                        margin: EdgeInsets.only(top: 50),
-                                        height: 300,
+                                       
+                                        
                                       ),
                                     ),
                                     Expanded(
-                                      //  الي على اليمين الجهه الرصاصي
+                                      //  الي على اليسار الجهه الرصاصي
+                                      
                                       child: Padding(
                                         padding: const EdgeInsets.only(
-                                          left: 10,
-                                          bottom: 60,
+                                         left: 10,//الي يحرك المربع الرصاصي 
+                                           top: 30,// الي ينزله ويرقيه 
                                         ),
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -482,8 +493,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                             color: Colors.grey[100],
                                           ),
 
-                                          width: 300,
-                                          height: 300,
+                                          width:MediaQuery.of(context).size.width/2,
+                                           height:MediaQuery.of(context).size.height/2,
 
                                           // alignment: Alignment.center,
 
@@ -491,10 +502,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Center(
                                               child: Row(children: [
                                                 Expanded(
+                                                  //هذا الي يحرك المربعات داخل الرصاصي 
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                      right: 40,
+                                                      right: 60,
                                                       // right: 25,
                                                       // left: 40,
                                                     ),
@@ -772,9 +784,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                               ]),
                                             ),
                                           ),
-                                          margin: EdgeInsets.only(
-                                              top: 100, left: 20),
-                                          //width: MediaQuery.of(context).size.width / 2,
+                                          // margin: EdgeInsets.only(
+                                          //     top: 100, left: 20),
+                                          // width: MediaQuery.of(context).size.width / 2,
                                         ),
                                       ),
                                     ),
