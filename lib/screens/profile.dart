@@ -9,6 +9,7 @@ import 'package:nice_buttons/nice_buttons.dart';
 import '../widgets/back_arrow.dart';
 import 'WaitingScreen.dart';
 
+
 //bool WaitingScreen = false;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -432,13 +433,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                             ),
                                             //SizedBox(width: 100, height: 70),
 
-                                            ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                    //color: Colors.amber,
-                                                    //endColor: Colors.amber.shade400,
-                                                    //borderColor: Color.fromARGB(255, 231, 162, 0),
+                                            NiceButtons(
+                                              startColor: Colors.amber,
+                                              endColor: Colors.amber.shade400,
+                                              borderColor:Color.fromARGB(255, 231, 162, 0),
+                                              stretch: false,
+                                                // style: ElevatedButton.styleFrom(
+                                                //   elevation: 8,
+                                                //   onSurface: Colors.black,
+                                                //    primary: Colors.amber.shade400,
+                                                //    // onPrimary:Colors.amber,
+                                                //     shadowColor: Color.fromARGB(255, 231, 162, 0),
+                                                    
+                                                //   shape: RoundedRectangleBorder(
+                                                //     borderRadius: BorderRadius.circular(40),
+                                                //   ),
+                                                // //  side: BorderSide(
+                                                // //   // width: 0.5,
+                                                // //   // color:Color.fromARGB(255, 231, 162, 0),
 
-                                                    ),
+                                                // //  )
+                                                //     ),
+                                                    
                                                 child: Text(
                                                   'تسجيل خروج',
                                                   style: TextStyle(
@@ -451,7 +467,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                         'ReadexPro-Regular',
                                                   ),
                                                 ),
-                                                onPressed: () {
+                                                onTap: (finish) {
                                                   AwesomeDialog(
                                                     //if there is missing info this will be displayed
                                                     context: context,

@@ -45,6 +45,7 @@ dependencies:
   get: ^4.6.1
   better_player: ^0.0.81
   flutter_spinkit:  ^5.1.0
+  button3d: ^0.1.1
 
 dev_dependencies:
   flutter_test:
