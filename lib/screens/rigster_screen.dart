@@ -8,6 +8,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'verify_screen.dart';
+
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
@@ -866,7 +868,7 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          home_page()));
+                                                          VerifyScreen()));
                                             }
                                             ;
                                           },

@@ -9,7 +9,6 @@ import 'package:nice_buttons/nice_buttons.dart';
 import '../widgets/back_arrow.dart';
 import 'WaitingScreen.dart';
 
-
 //bool WaitingScreen = false;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -284,25 +283,26 @@ class _ProfilePageState extends State<ProfilePage> {
                                                                       TextOverflow
                                                                           .ellipsis,
                                                                 ),
-                                                                Text(
-                                                                  name,
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .brown,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontFamily:
-                                                                          'ReadexPro',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                  softWrap:
-                                                                      false,
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                ),
+                                                                Flexible(
+                                                                  child: Text(
+                                                                    name,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .brown,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontFamily:
+                                                                            'ReadexPro',
+                                                                        fontWeight:
+                                                                            FontWeight.w700),
+                                                                    softWrap:
+                                                                        false,
+                                                                    maxLines: 1,
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                  ),
+                                                                )
                                                               ],
                                                             ),
                                                           )
@@ -352,17 +352,23 @@ class _ProfilePageState extends State<ProfilePage> {
                                                                       FontWeight
                                                                           .w700),
                                                             ),
-                                                            Text(age,
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .brown,
-                                                                    fontSize:
-                                                                        15,
-                                                                    fontFamily:
-                                                                        'ReadexPro',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700))
+                                                            Flexible(
+                                                                child: Text(age,
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    maxLines: 1,
+                                                                    softWrap:
+                                                                        false,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .brown,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontFamily:
+                                                                            'ReadexPro',
+                                                                        fontWeight:
+                                                                            FontWeight.w700)))
                                                           ],
                                                         ),
                                                       ),
@@ -412,17 +418,23 @@ class _ProfilePageState extends State<ProfilePage> {
                                                                       FontWeight
                                                                           .w700),
                                                             ),
-                                                            Text(email,
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .brown,
-                                                                    fontSize:
-                                                                        15,
-                                                                    fontFamily:
-                                                                        'ReadexPro',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700))
+                                                            Flexible(
+                                                                child: Text(email,
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    maxLines: 1,
+                                                                    softWrap:
+                                                                        false,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .brown,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontFamily:
+                                                                            'ReadexPro',
+                                                                        fontWeight:
+                                                                            FontWeight.w700)))
                                                           ],
                                                         ),
                                                       ),
@@ -434,17 +446,22 @@ class _ProfilePageState extends State<ProfilePage> {
                                             //SizedBox(width: 100, height: 70),
 
                                             NiceButtons(
-                                              startColor: Colors.amber,
-                                              endColor: Colors.amber.shade400,
-                                              borderColor:Color.fromARGB(255, 231, 162, 0),
-                                              stretch: false,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    6,
+                                                startColor: Colors.amber,
+                                                endColor: Colors.amber.shade400,
+                                                borderColor: Color.fromARGB(
+                                                    255, 231, 162, 0),
+                                                stretch: false,
                                                 // style: ElevatedButton.styleFrom(
                                                 //   elevation: 8,
                                                 //   onSurface: Colors.black,
                                                 //    primary: Colors.amber.shade400,
                                                 //    // onPrimary:Colors.amber,
                                                 //     shadowColor: Color.fromARGB(255, 231, 162, 0),
-                                                    
+
                                                 //   shape: RoundedRectangleBorder(
                                                 //     borderRadius: BorderRadius.circular(40),
                                                 //   ),
@@ -454,7 +471,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                                                 // //  )
                                                 //     ),
-                                                    
+
                                                 child: Text(
                                                   'تسجيل خروج',
                                                   style: TextStyle(
@@ -462,7 +479,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                         Colors.brown.shade600,
                                                     decoration:
                                                         TextDecoration.none,
-                                                    fontSize: 28.0,
+                                                    fontSize: 25.0,
                                                     fontFamily:
                                                         'ReadexPro-Regular',
                                                   ),
