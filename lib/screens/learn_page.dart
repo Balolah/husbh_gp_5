@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:husbh_app/screens/home_page.dart';
+import 'package:husbh_app/screens/multiplication/multiplication_video.dart';
 import 'package:husbh_app/screens/profile.dart';
 
 //import whats needed for styling & properties
@@ -13,7 +14,10 @@ import 'package:nice_buttons/nice_buttons.dart';
 
 //import project's files
 import 'WaitingScreen.dart';
-import 'addition_video.dart';
+import 'addition/addition_video.dart';
+import 'division/division_video.dart';
+import 'subtraction/subtraction_video.dart';
+import 'multiplication/multiplication_video.dart';
 
 void main() async {
   //calling to use firebase
@@ -140,21 +144,30 @@ class _learnpageState extends State<learn_page> {
                         width: 60,
                         height: 60,
                         decoration: BoxDecoration(
-                          color: Colors.amber,
-                          image: DecorationImage(
-                            image: sex ==
-                                    "boy" //if the user (child) is boy, show husbh boy, otherwise husbh girl
-                                ? AssetImage('images/husbh_boy.png')
-                                : AssetImage('images/husbh_girl.png'),
-                          ),
-                          //style
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                            //color: Color(0xFF3489e9),
-                            color: Colors.amber,
-                            width: 2,
-                          ),
-                        ),
+                            //color: Colors.amber,
+                            image: DecorationImage(
+                              image: sex ==
+                                      "boy" //if the user (child) is boy, show husbh boy, otherwise husbh girl
+                                  ? AssetImage('images/husbh_boy.png')
+                                  : AssetImage('images/husbh_girl.png'),
+                              scale: 0.02,
+                            ),
+                            //style
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                              //color: Color(0xFF3489e9),
+                              // color: Colors.amber,
+                              color: Colors.grey.shade200,
+                              width: 1,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                // color: Colors
+                                //     .yellow
+                                //     .shade100,
+                                color: Colors.grey.shade300,
+                              )
+                            ]),
                       ),
                     ),
 
@@ -170,10 +183,11 @@ class _learnpageState extends State<learn_page> {
                           '$name'.toString(), //in arabic
                           style: TextStyle(
                             decoration: TextDecoration.none,
-                            fontFamily: 'ReadexPro-Regular',
+                            fontFamily: 'ReadexPro',
                             fontWeight: FontWeight.w700,
-                            fontSize: 30.0,
-                            color: Color.fromARGB(255, 255, 191, 0),
+                            fontSize: 28.0,
+                            color: Colors.brown,
+                            //color: Color.fromARGB(255, 255, 191, 0),
                           ),
                         ))
                   ]),
@@ -211,7 +225,7 @@ class _learnpageState extends State<learn_page> {
                                   decoration: TextDecoration.none,
                                   fontSize: 70.0,
                                   color: Colors.white,
-                                  fontFamily: 'ReadexPro-Regular',
+                                  fontFamily: 'ReadexPro',
                                   fontWeight: FontWeight.bold))),
                       //End addition operation button
 
@@ -229,11 +243,12 @@ class _learnpageState extends State<learn_page> {
                           borderThickness: 6,
                           gradientOrientation: GradientOrientation.Horizontal,
                           onTap: (finish) {
-                            /*   Navigator.push( //Navigate to subtraction video
-                                context,
-                                 MaterialPageRoute(
-                                     builder: (context) => subVideo()),
-                               ); */
+                            Navigator.push(
+                              //Navigate to subtraction video
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => subtractionVideo()),
+                            );
                           },
                           child: Text('-',
                               textAlign: TextAlign.center,
@@ -241,7 +256,7 @@ class _learnpageState extends State<learn_page> {
                                   decoration: TextDecoration.none,
                                   fontSize: 70.0,
                                   color: Colors.white,
-                                  fontFamily: 'ReadexPro-Regular',
+                                  fontFamily: 'ReadexPro',
                                   fontWeight: FontWeight.bold))),
                       //End subtraction operation button
 
@@ -259,11 +274,12 @@ class _learnpageState extends State<learn_page> {
                           borderThickness: 6,
                           gradientOrientation: GradientOrientation.Horizontal,
                           onTap: (finish) {
-                            /*   Navigator.push( //Navigate to multiplication video
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => multiVideo()),
-                               ); */
+                            Navigator.push(
+                              //Navigate to multiplication video
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => multiplicationVideo()),
+                            );
                           },
                           child: Text('×',
                               textAlign: TextAlign.center,
@@ -271,7 +287,7 @@ class _learnpageState extends State<learn_page> {
                                   decoration: TextDecoration.none,
                                   fontSize: 70.0,
                                   color: Colors.white,
-                                  fontFamily: 'ReadexPro-Regular',
+                                  fontFamily: 'ReadexPro',
                                   fontWeight: FontWeight.bold))),
                       //End multiplication operation button
 
@@ -289,11 +305,12 @@ class _learnpageState extends State<learn_page> {
                           borderThickness: 6,
                           gradientOrientation: GradientOrientation.Horizontal,
                           onTap: (finish) {
-                            /*   Navigator.push( //Navigate to division video
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => divisionVideo()),
-                               ); */
+                            Navigator.push(
+                              //Navigate to division video
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => divisionVideo()),
+                            );
                           },
                           child: Text('\u00F7',
                               textAlign: TextAlign.center,
@@ -301,7 +318,7 @@ class _learnpageState extends State<learn_page> {
                                   decoration: TextDecoration.none,
                                   fontSize: 70.0,
                                   color: Colors.white,
-                                  fontFamily: 'ReadexPro-Regular',
+                                  fontFamily: 'ReadexPro',
                                   fontWeight: FontWeight.bold))),
                       //End division operation button
                     ],

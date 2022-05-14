@@ -30,9 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  flutter_svg: ^1.0.1
   cupertino_icons: ^1.0.2
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.11
@@ -46,6 +46,12 @@ dependencies:
   better_player: ^0.0.81
   flutter_spinkit:  ^5.1.0
   button3d: ^0.1.1
+  flutter_staggered_grid_view: ^0.6.1
+  font_awesome_flutter: ^10.1.0
+  percent_indicator: ^4.0.0
+  timeline_tile: ^2.0.0
+  timelines: ^0.1.0
+  arabic_numbers: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -72,8 +78,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-    - assets/Rabbit.mp4
-    - images/divide.png
     - assets/ 
 
   

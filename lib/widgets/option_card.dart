@@ -2,16 +2,18 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class OptionCard extends StatelessWidget {
-  const OptionCard(
-      {Key? key,
-      required this.option,
-      required this.color,
-      required this.onTap})
-      : super(key: key);
+  const OptionCard({
+    Key? key,
+    required this.option,
+    required this.color,
+    required this.onTap,
+    // required this.fontFamily
+  }) : super(key: key);
 
   final String option;
   final VoidCallback onTap;
   final Color color;
+  // final fontFamily;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,9 @@ class OptionCard extends StatelessWidget {
               option,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 28,
+                fontSize: 30,
                 color: Colors.white,
-                fontFamily: 'ReadexPro',
+                fontFamily: 'ReadexPro-Regular',
               ),
             ),
           ),
