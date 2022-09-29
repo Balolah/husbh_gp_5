@@ -3,6 +3,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:husbh_app/screens/home_page.dart';
+import 'package:husbh_app/screens/reset_password.dart';
 import '../widgets/check_if_email_used.dart';
 import '../widgets/my_button.dart';
 import 'rigster_screen.dart';
@@ -302,6 +303,42 @@ class _LoginScreenState extends State<LoginScreen> {
                                             },
                                             child: const Text(
                                               'سجل الآن',
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                                fontFamily: 'ReadexPro',
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      //NEW!! REST PASSWORD
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'نسيت كلمة المرور؟',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              fontFamily: 'ReadexPro',
+                                            ),
+                                          ),
+                                          TextButton(
+                                            style: TextButton.styleFrom(
+                                              textStyle:
+                                                  const TextStyle(fontSize: 20),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ResetPassword()),
+                                              );
+                                            },
+                                            child: const Text(
+                                              'إعادة ضبط كلمة المرور',
                                               style: TextStyle(
                                                 fontSize: 11,
                                                 fontFamily: 'ReadexPro',

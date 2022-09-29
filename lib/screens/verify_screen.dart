@@ -67,7 +67,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              'الرجاء تأكيد الإيميل. ${user.email} تم إرسال إيميل إلى',
+                              'الرجاء التحقق من البريد الالكتروني. ${user.email} تم إرسال رسالة إلى',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'ReadexPro',

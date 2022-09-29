@@ -51,11 +51,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _controller = VideoPlayerController.asset('assets/Rabbit.mp4')
       ..initialize().then((value) => {setState(() {})});
-    _controller.setLooping(true);
+    // _controller.setLooping(true);
     _controller.setVolume(0.0);
     _controller.play();
     Timer(
-        Duration(seconds: 10),
+        Duration(seconds: 5),
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(

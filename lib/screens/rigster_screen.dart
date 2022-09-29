@@ -877,23 +877,21 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                   // 'divLevel2' : [],
                                                   // 'divLevel3' : [],
 
-                                                  
                                                   'sex': _value == 0
                                                       ? 'boy'
                                                       : 'girl',
                                                   'email': user.email,
-                                                  
-
                                                 });
                                                 FirebaseFirestore.instance
                                                     .collection('users')
-                                                    .doc(user.uid).collection('Score').doc('Add')
+                                                    .doc(user.uid)
+                                                    .collection('Score')
+                                                    .doc('Add')
                                                     .set({
-                                                  
                                                   //add
-                                                  'addLevel1' : [],
-                                                  'addLevel2' : [],
-                                                  'addLevel3' : [],
+                                                  'addLevel1': [],
+                                                  'addLevel2': [],
+                                                  'addLevel3': [],
 
                                                   // //sub
                                                   // 'subLevel1' : [],
@@ -911,20 +909,17 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                   // 'divLevel1' : [],
                                                   // 'divLevel2' : [],
                                                   // 'divLevel3' : [],
-                                                  
-
                                                 });
-                                                 FirebaseFirestore.instance
+                                                FirebaseFirestore.instance
                                                     .collection('users')
-                                                    .doc(user.uid).collection('Score').doc('Sub')
+                                                    .doc(user.uid)
+                                                    .collection('Score')
+                                                    .doc('Sub')
                                                     .set({
-                                                  
-                                              
-
                                                   //sub
-                                                  'subLevel1' : [],
-                                                  'subLevel2' : [],
-                                                  'subLevel3' : [],
+                                                  'subLevel1': [],
+                                                  'subLevel2': [],
+                                                  'subLevel3': [],
 
                                                   // //multiplication
 
@@ -937,44 +932,38 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                                   // 'divLevel1' : [],
                                                   // 'divLevel2' : [],
                                                   // 'divLevel3' : [],
-                                                  
-
                                                 });
                                                 FirebaseFirestore.instance
                                                     .collection('users')
-                                                    .doc(user.uid).collection('Score').doc('Mul')
+                                                    .doc(user.uid)
+                                                    .collection('Score')
+                                                    .doc('Mul')
                                                     .set({
-                                              
-
                                                   //multiplication
 
-                                                  'mulLevel1' : [],
-                                                  'mulLevel2' : [],
-                                                  'mulLevel3' : [],
+                                                  'mulLevel1': [],
+                                                  'mulLevel2': [],
+                                                  'mulLevel3': [],
 
                                                   // //division
 
                                                   // 'divLevel1' : [],
                                                   // 'divLevel2' : [],
                                                   // 'divLevel3' : [],
-                                                  
-
                                                 });
-                                                  FirebaseFirestore.instance
+                                                FirebaseFirestore.instance
                                                     .collection('users')
-                                                    .doc(user.uid).collection('Score').doc('Div')
+                                                    .doc(user.uid)
+                                                    .collection('Score')
+                                                    .doc('Div')
                                                     .set({
-                                             
                                                   //division
 
-                                                  'divLevel1' : [],
-                                                  'divLevel2' : [],
-                                                  'divLevel3' : [],
-                                                  
-
+                                                  'divLevel1': [],
+                                                  'divLevel2': [],
+                                                  'divLevel3': [],
                                                 });
                                               }
-                                              
 
                                               inputData();
                                               Navigator.pushReplacement(
@@ -986,7 +975,8 @@ class _RegistrationScreenThirdState extends State<RegistrationScreenThird> {
                                             ;
                                           },
                                           startColor: Colors.amber,
-                                          endColor: Color.fromRGBO(255, 202, 40, 1),
+                                          endColor:
+                                              Color.fromRGBO(255, 202, 40, 1),
                                           borderColor:
                                               Color.fromARGB(255, 231, 162, 0),
                                           textColor: Colors.brown.shade600

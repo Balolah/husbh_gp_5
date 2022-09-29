@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:husbh_app/screens/profile.dart';
+import 'package:husbh_app/widgets/my_button.dart';
 
 //import whats needed for styling & properties
 import 'package:nice_buttons/nice_buttons.dart';
