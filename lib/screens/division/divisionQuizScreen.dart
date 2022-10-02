@@ -10,7 +10,7 @@ import 'divisionResultScreen.dart';
 import 'dart:async';
 import 'package:arabic_numbers/arabic_numbers.dart';
 import 'package:husbh_app/screens/division/divisionResultScreen.dart';
-
+import 'package:just_audio/just_audio.dart';
 //for firebase
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -38,7 +38,8 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
   final _auth = FirebaseAuth.instance;
   late User signedInUser;
   var id;
-  //
+  //play audio
+  late AudioPlayer player;
 
   ArabicNumbers arabicNumber = ArabicNumbers();
 
@@ -123,7 +124,7 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
     //for firebase
     onRefresh(FirebaseAuth.instance.currentUser);
     getCurrentUser();
-    //
+    player = AudioPlayer();
 
     TextDirection.rtl;
     super.initState();
@@ -299,6 +300,12 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
     }
   }
 
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
   //for firebase
 
   onRefresh(userCare) {
@@ -403,6 +410,8 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
               userAnswer: userAnswer),
         ),
       );
+      player.setAsset('assets/your_score.mp3');
+      player.play();
     } else {
       setState(() {
         ++j;
@@ -630,9 +639,17 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][0].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][0].toString());
                           });
                         }),
@@ -653,9 +670,17 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][1].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][1].toString());
                           });
                         }),
@@ -676,9 +701,17 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][2].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][2].toString());
                           });
                         }),
@@ -699,9 +732,17 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][3].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][3].toString());
                           });
                         }),

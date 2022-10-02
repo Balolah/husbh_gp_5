@@ -1,19 +1,18 @@
 // import 'dart:html';
+import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter/services.dart';
 import '../../widgets/next_button.dart';
 import '../../widgets/option_card.dart';
-import 'dart:async';
 import 'package:arabic_numbers/arabic_numbers.dart';
 import 'additionResultScreen.dart';
-import 'package:audioplayers/audioplayers.dart';
+//import 'package:audioplayers/audioplayers.dart';
+import 'package:just_audio/just_audio.dart';
 
 //for firebase
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class additionQuizScreen extends StatefulWidget {
   const additionQuizScreen({Key? key}) : super(key: key);
@@ -36,7 +35,10 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
   get width => MediaQuery.of(context).size.width;
   get height => MediaQuery.of(context).size.height;
 
-//to convert numbers to arabic
+  //play audio
+  late AudioPlayer player;
+
+  //to convert numbers to arabic
   ArabicNumbers arabicNumber = ArabicNumbers();
 
   //for firebase
@@ -44,7 +46,6 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
   final _auth = FirebaseAuth.instance;
   late User signedInUser;
   var id;
-  //
 
   List qustions = []; //question list
   List answers = []; //answer list
@@ -92,7 +93,7 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
     //for firebase
     onRefresh(FirebaseAuth.instance.currentUser);
     getCurrentUser();
-    //
+    player = AudioPlayer();
     TextDirection.rtl;
     super.initState();
 
@@ -188,8 +189,14 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
       mcq.add(ans);
     }
   }
-  //for firebase
 
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
+  //for firebase
   onRefresh(userCare) {
     setState(() {
       user = userCare;
@@ -208,7 +215,6 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
       print(e);
     }
   }
-  /////
 
   //convert the numbers to arabic using package:arabic_numbers
 
@@ -224,7 +230,7 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
   }
 
 //change the question method
-  _changeQuestion(ans) {
+  _changeQuestion(ans) async {
     userAnswer.add(ans);
 
     if (j + 1 >= 12) {
@@ -292,6 +298,8 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
               userAnswer: userAnswer),
         ),
       );
+      player.setAsset('assets/your_score.mp3');
+      player.play();
     } else {
       setState(() {
         ++j;
@@ -437,10 +445,18 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][0].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           // _audioCache.play('OptionsSound.mp3');
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][0].toString());
                           });
                         }),
@@ -461,10 +477,18 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][1].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           // _audioCache.play('OptionsSound.mp3');
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][1].toString());
                           });
                         }),
@@ -485,10 +509,18 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][2].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           // _audioCache.play('OptionsSound.mp3');
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][2].toString());
                           });
                         }),
@@ -509,10 +541,18 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][3].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           // _audioCache.play('OptionsSound.mp3');
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][3].toString());
                           });
                         }),

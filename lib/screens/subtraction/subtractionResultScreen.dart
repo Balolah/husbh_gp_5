@@ -2,7 +2,7 @@ import 'package:arabic_numbers/arabic_numbers.dart';
 import 'package:flutter/material.dart';
 import 'package:husbh_app/screens/learn_page.dart';
 import 'package:nice_buttons/nice_buttons.dart';
-
+import 'package:just_audio/just_audio.dart';
 import '../profile.dart';
 // import 'package:fabexdateformatter/fabexdateformatter.dart';
 
@@ -29,6 +29,9 @@ class subtractionResultScreen extends StatelessWidget {
   //total score in arabic
   late final totalSubScoreArabic;
   late final maxTotalSubScoreArabic;
+
+  //play audio
+  late AudioPlayer player;
 
   subtractionResultScreen({
     this.subsinglescore,

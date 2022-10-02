@@ -12,7 +12,7 @@ import 'package:husbh_app/screens/QuizButtonIcon.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 import 'package:arabic_numbers/arabic_numbers.dart';
 import 'multiplication_video.dart';
-
+import 'package:just_audio/just_audio.dart';
 //for firebase
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,11 +41,13 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
   ArabicNumbers arabicNumber = ArabicNumbers();
 
   //for firebase
-   late User user;
+  late User user;
   final _auth = FirebaseAuth.instance;
   late User signedInUser;
   var id;
-  //
+
+  //play audio
+  late AudioPlayer player;
 
   List qustions = [];
   List answers = [];
@@ -118,11 +120,10 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
   }
 
   void initState() {
-
     //for firebase
     onRefresh(FirebaseAuth.instance.currentUser);
     getCurrentUser();
-    //
+    player = AudioPlayer();
 
     TextDirection.rtl;
     super.initState();
@@ -199,9 +200,15 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
     }
   }
 
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
   //for firebase
 
-   onRefresh(userCare) {
+  onRefresh(userCare) {
     setState(() {
       user = userCare;
     });
@@ -258,35 +265,32 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
           mulLevel3Score++;
         }
       }
-       Map<String, dynamic> level1 = {
-                                    'score': mulLevel1Score, 
-                                    'year': year(),
-                                    'time': time(),
-                                  };
-                                  Map<String, dynamic> level2 = {
-                                    'score': mulLevel2Score,
-                                    'year': year(),
-                                    'time': time(),
-                                  };
-                                  Map<String, dynamic> level3 = {
-                                    'score':mulLevel2Score,
-                                    'year': year(),
-                                    'time': time(),
-                                  };
+      Map<String, dynamic> level1 = {
+        'score': mulLevel1Score,
+        'year': year(),
+        'time': time(),
+      };
+      Map<String, dynamic> level2 = {
+        'score': mulLevel2Score,
+        'year': year(),
+        'time': time(),
+      };
+      Map<String, dynamic> level3 = {
+        'score': mulLevel2Score,
+        'year': year(),
+        'time': time(),
+      };
 
-  FirebaseFirestore.instance
-                                     .collection('users')
-                                     .doc(user.uid)
-                                     .collection('Score')
-                                     .doc('Mul')
-                                     .update({
-                                   'mulLevel1':
-                                       FieldValue.arrayUnion([level1]),
-                                   'mulLevel2':
-                                       FieldValue.arrayUnion([level2]),
-                                   'mulLevel3':
-                                       FieldValue.arrayUnion([level3]),
-                                 });
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection('Score')
+          .doc('Mul')
+          .update({
+        'mulLevel1': FieldValue.arrayUnion([level1]),
+        'mulLevel2': FieldValue.arrayUnion([level2]),
+        'mulLevel3': FieldValue.arrayUnion([level3]),
+      });
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (BuildContext context) => multiplicationResultScreen(
@@ -301,6 +305,8 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
               userAnswer: userAnswer),
         ),
       );
+      player.setAsset('assets/your_score.mp3');
+      player.play();
     } else {
       setState(() {
         ++j;
@@ -438,9 +444,17 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][0].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][0].toString());
                           });
                         }),
@@ -461,9 +475,17 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][1].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][1].toString());
                           });
                         }),
@@ -484,9 +506,17 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][2].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][2].toString());
                           });
                         }),
@@ -507,9 +537,17 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][3].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][3].toString());
                           });
                         }),
@@ -810,7 +848,7 @@ class _QuizScreenState extends State<multiplicationQuizScreen> {
     }
   }
 
-String replaceFarsiNumber(String input) {
+  String replaceFarsiNumber(String input) {
     const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const farsi = ['۰', '۱', '۲', '۳', '٤', '٥', '٦', '۷', '۸', '۹'];
 
@@ -931,5 +969,4 @@ String replaceFarsiNumber(String input) {
     print(DateTime.now().toLocal());
     return time;
   }
-
 }

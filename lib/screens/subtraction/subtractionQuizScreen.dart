@@ -7,7 +7,7 @@ import '../../widgets/next_button.dart';
 import '../../widgets/option_card.dart';
 import 'subtractionResultScreen.dart';
 import 'dart:async';
-
+import 'package:just_audio/just_audio.dart';
 import 'package:husbh_app/screens/QuizButtonIcon.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 import 'package:arabic_numbers/arabic_numbers.dart';
@@ -33,8 +33,6 @@ class subtractionQuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<subtractionQuizScreen> {
-
- 
   ////
   get width => MediaQuery.of(context).size.width;
   get height => MediaQuery.of(context).size.height;
@@ -45,6 +43,9 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
   final _auth = FirebaseAuth.instance;
   late User signedInUser;
   var id;
+
+  //play audio
+  late AudioPlayer player;
 
   List qustions = [];
   List answers = [];
@@ -91,7 +92,7 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
     getCurrentUser();
     TextDirection.rtl;
     super.initState();
-
+    player = AudioPlayer();
     for (var i = 1; i < numOfSingleQuestions + 1; i++) {
       ans = [];
       x = Random().nextInt(10);
@@ -195,6 +196,12 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
     }
   } // end of intitate
 
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
   onRefresh(userCare) {
     setState(() {
       user = userCare;
@@ -238,8 +245,6 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
         }
       }
 
-    
-
       // var Tensscore = 0;
       for (var i = 4; i < 8; i++) {
         if (userAnswer[i].toString() ==
@@ -256,34 +261,31 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
         }
       }
       Map<String, dynamic> level1 = {
-                                    'score': subSinglescore, 
-                                    'year': year(),
-                                    'time': time(),
-                                  };
-                                  Map<String, dynamic> level2 = {
-                                    'score': subTensscore,
-                                    'year': year(),
-                                    'time': time(),
-                                  };
-                                  Map<String, dynamic> level3 = {
-                                    'score':subHundredscore,
-                                    'year': year(),
-                                    'time': time(),
-                                  };
+        'score': subSinglescore,
+        'year': year(),
+        'time': time(),
+      };
+      Map<String, dynamic> level2 = {
+        'score': subTensscore,
+        'year': year(),
+        'time': time(),
+      };
+      Map<String, dynamic> level3 = {
+        'score': subHundredscore,
+        'year': year(),
+        'time': time(),
+      };
 
-  FirebaseFirestore.instance
-                                     .collection('users')
-                                     .doc(user.uid)
-                                     .collection('Score')
-                                     .doc('Sub')
-                                     .update({
-                                   'subLevel1':
-                                       FieldValue.arrayUnion([level1]),
-                                   'subLevel2':
-                                       FieldValue.arrayUnion([level2]),
-                                   'subLevel3':
-                                       FieldValue.arrayUnion([level3]),
-                                 });
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection('Score')
+          .doc('Sub')
+          .update({
+        'subLevel1': FieldValue.arrayUnion([level1]),
+        'subLevel2': FieldValue.arrayUnion([level2]),
+        'subLevel3': FieldValue.arrayUnion([level3]),
+      });
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (BuildContext context) => subtractionResultScreen(
@@ -298,6 +300,8 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
               userAnswer: userAnswer),
         ),
       );
+      player.setAsset('assets/your_score.mp3');
+      player.play();
     } else {
       setState(() {
         ++j;
@@ -440,9 +444,17 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][0].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][0].toString());
                           });
                         }),
@@ -463,9 +475,17 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][1].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][1].toString());
                           });
                         }),
@@ -486,9 +506,17 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][2].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][2].toString());
                           });
                         }),
@@ -509,9 +537,17 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
                                     218, 39, 39, 1) //incorrect
                             : const Color(0xFF3489e9),
                         onTap: () async {
+                          if (mcq[j][3].toString() ==
+                              convertOptionsToArabic(answers[j]).toString()) {
+                            await player.setAsset('assets/good_job.mp3');
+                            player.play();
+                          } else {
+                            await player.setAsset('assets/wrong_answer.mp3');
+                            player.play();
+                          }
                           changeColor();
                           //await
-                          await Future.delayed(const Duration(seconds: 2), () {
+                          await Future.delayed(const Duration(seconds: 4), () {
                             _changeQuestion(mcq[j][3].toString());
                           });
                         }),

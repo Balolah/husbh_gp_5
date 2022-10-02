@@ -1,11 +1,9 @@
 import 'package:arabic_numbers/arabic_numbers.dart';
-import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:husbh_app/screens/learn_page.dart';
 import 'package:husbh_app/screens/profile.dart';
 import 'package:nice_buttons/nice_buttons.dart';
+import 'package:just_audio/just_audio.dart';
 
 class additionResultScreen extends StatelessWidget {
   final addsinglescore;
@@ -29,6 +27,9 @@ class additionResultScreen extends StatelessWidget {
 //total score & in arabic
   late final totalAddScoreArabic;
   late final maxTotalAddScoreArabic;
+
+  //play audio
+  late AudioPlayer player;
 
   additionResultScreen({
     this.addsinglescore,
@@ -55,7 +56,7 @@ class additionResultScreen extends StatelessWidget {
     maxtensscoreArabic = arabicNumber.convert(maxTensScore);
     addhundredscoreArabic = arabicNumber.convert(addhundredscore);
     maxhundredscoreArabic = arabicNumber.convert(maxHundredScore);
-//convert total score to arabic
+    //convert total score to arabic
     totalAddScoreArabic = arabicNumber.convert(totalAddScore);
     maxTotalAddScoreArabic = arabicNumber.convert(maxTotalAddScore);
     TextDirection.rtl;

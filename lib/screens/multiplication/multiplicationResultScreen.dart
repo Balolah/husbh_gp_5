@@ -2,7 +2,7 @@ import 'package:arabic_numbers/arabic_numbers.dart';
 import 'package:flutter/material.dart';
 import 'package:husbh_app/screens/learn_page.dart';
 import 'package:nice_buttons/nice_buttons.dart';
-
+import 'package:just_audio/just_audio.dart';
 import '../profile.dart';
 
 class multiplicationResultScreen extends StatelessWidget {
@@ -28,6 +28,9 @@ class multiplicationResultScreen extends StatelessWidget {
   //total score in arabic
   late final totalMulScoreArabic;
   late final maxTotalMulScoreArabic;
+
+//play audio
+  late AudioPlayer player;
 
   multiplicationResultScreen({
     this.mullevel1score,

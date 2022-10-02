@@ -53,6 +53,7 @@ dependencies:
   timelines: ^0.1.0
   arabic_numbers: ^1.0.0
   basic_utils: ^5.3.0
+  just_audio: ^0.9.29
   
 dev_dependencies:
   flutter_test:

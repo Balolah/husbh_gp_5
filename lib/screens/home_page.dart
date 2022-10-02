@@ -1,20 +1,16 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 //import whats needed for the database (FireBase)
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:husbh_app/screens/profile.dart';
 import 'package:husbh_app/widgets/my_button.dart';
-
+import 'package:just_audio/just_audio.dart';
 //import whats needed for styling & properties
 import 'package:nice_buttons/nice_buttons.dart';
-
 //import project's files
 import 'WaitingScreen.dart';
 import 'learn_page.dart';
@@ -34,11 +30,22 @@ class _homepageState extends State<home_page> {
   var age;
   var name;
 
+  //play audio
+  late AudioPlayer player;
+
   @override
   void initState() {
     super.initState();
     onRefresh(FirebaseAuth.instance.currentUser);
     getCurrentUser();
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
   }
 
   onRefresh(userCare) {
@@ -209,12 +216,16 @@ class _homepageState extends State<home_page> {
                                     gradientOrientation:
                                         GradientOrientation.Horizontal,
                                     //Navigate to learn page
-                                    onTap: (finish) {
+                                    onTap: (finish) async {
+                                      await player.setAsset('assets/learn.mp3');
+                                      player.play();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => learn_page()),
                                       );
+                                      // await Future.delayed(
+                                      //     const Duration(seconds: 1));
                                     },
                                     child: Text('!تعلم',
                                         textAlign: TextAlign.center,
@@ -239,12 +250,15 @@ class _homepageState extends State<home_page> {
                                     gradientOrientation:
                                         GradientOrientation.Horizontal,
                                     //Navigate to game page
-                                    onTap: (finish) {
-                                      /*   Navigator.push(
+                                    onTap: (finish) async {
+                                      /*
+                                      await player.setAsset('assets/game.mp3');
+                                      player.play();
+                                     Navigator.push(
                                      context,
                                      MaterialPageRoute(
                                      builder: (context) => game_page()),
-                                   ); */
+                                  ); */
                                     },
                                     child: Text('!العب',
                                         textAlign: TextAlign.center,

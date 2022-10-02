@@ -7,6 +7,7 @@ import 'package:video_player/video_player.dart';
 import 'Screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:just_audio/just_audio.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,9 +46,10 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   late VideoPlayerController _controller;
-
+  late AudioPlayer player;
   @override
   void initState() {
+    player = AudioPlayer();
     super.initState();
     _controller = VideoPlayerController.asset('assets/Rabbit.mp4')
       ..initialize().then((value) => {setState(() {})});
@@ -61,6 +63,9 @@ class _SplashScreenState extends State<SplashScreen> {
             MaterialPageRoute(
               builder: (context) => LoginScreen(),
             )));
+    // player.setAsset('assets/husbh.mp3');
+    // player.setVolume(1.0);
+    // player.play();
   }
 
   @override
@@ -89,6 +94,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void dispose() {
     super.dispose();
     _controller.dispose();
+    player.dispose();
   }
 
   String replaceFarsiNumber(String input) {
