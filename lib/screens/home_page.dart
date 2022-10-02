@@ -14,6 +14,7 @@ import 'package:nice_buttons/nice_buttons.dart';
 //import project's files
 import 'WaitingScreen.dart';
 import 'learn_page.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 class home_page extends StatefulWidget {
   @override
@@ -85,173 +86,229 @@ class _homepageState extends State<home_page> {
     double height = MediaQuery.of(context).size.height;
     return FutureBuilder(
         future: _getData(),
-        builder: (context, snapshot) =>
-            snapshot.connectionState == ConnectionState.waiting
-                ? Scaffold(
-                    body: Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.maybeOf(context)?.size.width,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).canvasColor,
-                              borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(30),
-                                  bottomLeft: Radius.circular(30))),
-                          // child: Text("plase wait")
-                        ),
-                        WaitingScreen(),
-                      ],
-                    ),
-                  )
-                : Stack(//Stack for all components
-
-                    children: [
-                    //background
+        builder: (context, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? Scaffold(
+                body: Stack(
+                  children: [
                     Container(
+                      width: MediaQuery.maybeOf(context)?.size.width,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('images/home_background.png'),
-                          fit: BoxFit.cover,
-                        ),
+                          color: Theme.of(context).canvasColor,
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(30),
+                              bottomLeft: Radius.circular(30))),
+                      // child: Text("plase wait")
+                    ),
+                    WaitingScreen(),
+                  ],
+                ),
+              )
+            : Stack(//Stack for all components
+
+                children: [
+                //background
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/home_background.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+
+//profile image
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0, right: 20.0),
+                  child: Row(textDirection: TextDirection.rtl, children: [
+                    GestureDetector(
+                      //navigate to profile page
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfilePage()),
+                        );
+                      },
+
+                      child: Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            //color: Colors.amber,
+                            image: DecorationImage(
+                              image: sex ==
+                                      "boy" //if the user (child) is boy, show husbh boy, otherwise husbh girl
+                                  ? AssetImage('images/husbh_boy.png')
+                                  : AssetImage('images/husbh_girl.png'),
+                              scale: 0.02,
+                            ),
+                            //style
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                              //color: Color(0xFF3489e9),
+                              color: Colors.grey.shade200,
+                              width: 1,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                // color: Colors
+                                //     .yellow
+                                //     .shade100,
+                                color: Colors.grey.shade300,
+                              )
+                            ]),
                       ),
                     ),
 
-//profile image
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0, right: 20.0),
-                      child: Row(textDirection: TextDirection.rtl, children: [
-                        GestureDetector(
-                          //navigate to profile page
-                          onTap: () {
-                            Navigator.push(
+                    //fetch user name & text as button to navigate to profile page
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ProfilePage()),
-                            );
+                                  builder: (context) => ProfilePage()));
+                        },
+                        child: Text(
+                          '$name'.toString(), //in arabic
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontFamily: 'ReadexPro',
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28.0,
+                            color: Colors.brown,
+                            //color: Color.fromARGB(255, 255, 191, 0),
+                          ),
+                        ))
+                  ]),
+                ),
+
+                //about us
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0, left: 20.0),
+                  child: Row(
+                    textDirection: TextDirection.rtl,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      NiceButtons(
+                          stretch: false,
+                          startColor: Color.fromARGB(255, 255, 109, 0),
+                          //FF6D00
+                          endColor: Color.fromARGB(255, 255, 109, 0),
+                          borderColor: Color.fromARGB(255, 204, 867, 0),
+                          width: 60.0,
+                          height: 60.0,
+                          borderRadius: 40.0,
+                          gradientOrientation: GradientOrientation.Horizontal,
+                          onTap: (finish) {
+                            AwesomeDialog(
+                              context: context,
+                              //change the dialog type here ex: INFO
+                              dialogType: DialogType.QUESTION,
+                              body: const Center(
+                                  child: Text('husbh \nis an application ....',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        decoration: TextDecoration.none,
+                                        fontSize: 16.0,
+                                        color: Colors.black,
+                                        fontFamily: 'ReadexPro',
+                                      ))),
+                              borderSide:
+                                  BorderSide(color: Colors.green, width: 1),
+                              width: 350,
+                              animType: AnimType.LEFTSLIDE,
+                              showCloseIcon: true,
+                              btnOkIcon: Icons.check_circle,
+                              /*IF THE CHILD (TEXT) IS USED, title & desc WILL BE IGNORED
+                              IF YOU WANT TO USE title and desc, YOU MUST DELETE THE CHILD (TEXT)*/
+
+                              // title: 'عن التطبيق',
+                              // desc: 'كلام عننا',
+                            ).show();
                           },
-
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                //color: Colors.amber,
-                                image: DecorationImage(
-                                  image: sex ==
-                                          "boy" //if the user (child) is boy, show husbh boy, otherwise husbh girl
-                                      ? AssetImage('images/husbh_boy.png')
-                                      : AssetImage('images/husbh_girl.png'),
-                                  scale: 0.02,
-                                ),
-                                //style
-                                borderRadius: BorderRadius.circular(40),
-                                border: Border.all(
-                                  //color: Color(0xFF3489e9),
-                                  color: Colors.grey.shade200,
-                                  width: 1,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    // color: Colors
-                                    //     .yellow
-                                    //     .shade100,
-                                    color: Colors.grey.shade300,
-                                  )
-                                ]),
-                          ),
-                        ),
-
-                        //fetch user name & text as button to navigate to profile page
-                        TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ProfilePage()));
-                            },
-                            child: Text(
-                              '$name'.toString(), //in arabic
+                          child: Text('?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontFamily: 'ReadexPro',
-                                fontWeight: FontWeight.w700,
-                                fontSize: 28.0,
-                                color: Colors.brown,
-                                //color: Color.fromARGB(255, 255, 191, 0),
-                              ),
-                            ))
-                      ]),
-                    ),
+                                  decoration: TextDecoration.none,
+                                  fontSize: 30.0,
+                                  color: Colors.white,
+                                  fontFamily: 'ReadexPro',
+                                  fontWeight: FontWeight.bold))),
+                    ],
+                  ),
+                ),
 
-                    //logo
-                    Column(
-                        //center logo
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //logo
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 5.0),
-                            child: Image.asset(
-                              'images/husbhlogo_homepage.png',
-                              //image size
-                              height: 180,
-                              width: 180,
-                            ),
-                          ),
+                //logo
+                Column(
+                    //center logo
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //logo
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 5.0),
+                        child: Image.asset(
+                          'images/husbhlogo_homepage.png',
+                          //image size
+                          height: 180,
+                          width: 180,
+                        ),
+                      ),
 
-                          //Row that has 2 main button: learn & game
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              textDirection: TextDirection.rtl,
-                              children: [
-                                //Learn button
-                                NiceButtons(
-                                    stretch: false,
-                                    startColor: Colors.lightBlueAccent,
-                                    endColor: Colors.lightBlueAccent,
-                                    borderColor: Color(0xFF3489e9),
-                                    width: 170.0,
-                                    height: 100.0,
-                                    borderRadius: 60.0,
-                                    gradientOrientation:
-                                        GradientOrientation.Horizontal,
-                                    //Navigate to learn page
-                                    onTap: (finish) async {
-                                      await player.setAsset('assets/learn.mp3');
-                                      player.play();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => learn_page()),
-                                      );
-                                      // await Future.delayed(
-                                      //     const Duration(seconds: 1));
-                                    },
-                                    child: Text('!تعلم',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            decoration: TextDecoration.none,
-                                            fontSize: 28.0,
-                                            color: Colors.white,
-                                            fontFamily: 'ReadexPro',
-                                            fontWeight: FontWeight.bold))),
+                      //Row that has 2 main button: learn & game
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          textDirection: TextDirection.rtl,
+                          children: [
+                            //Learn button
+                            NiceButtons(
+                                stretch: false,
+                                startColor: Colors.lightBlueAccent,
+                                endColor: Colors.lightBlueAccent,
+                                borderColor: Color(0xFF3489e9),
+                                width: 170.0,
+                                height: 100.0,
+                                borderRadius: 60.0,
+                                gradientOrientation:
+                                    GradientOrientation.Horizontal,
+                                //Navigate to learn page
+                                onTap: (finish) async {
+                                  await player.setAsset('assets/learn.mp3');
+                                  player.play();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => learn_page()),
+                                  );
+                                  // await Future.delayed(
+                                  //     const Duration(seconds: 1));
+                                },
+                                child: Text('!تعلم',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        decoration: TextDecoration.none,
+                                        fontSize: 28.0,
+                                        color: Colors.white,
+                                        fontFamily: 'ReadexPro',
+                                        fontWeight: FontWeight.bold))),
 
-                                SizedBox(width: 10), //Space between buttons
+                            SizedBox(width: 10), //Space between buttons
 
-                                //Game button
-                                NiceButtons(
-                                    stretch: false,
-                                    startColor: Colors.lightBlueAccent,
-                                    endColor: Colors.lightBlueAccent,
-                                    borderColor: Color(0xFF3489e9),
-                                    width: 170.0,
-                                    height: 100.0,
-                                    borderRadius: 60.0,
-                                    gradientOrientation:
-                                        GradientOrientation.Horizontal,
-                                    //Navigate to game page
-                                    onTap: (finish) async {
-                                      /*
+                            //Game button
+                            NiceButtons(
+                                stretch: false,
+                                startColor: Colors.lightBlueAccent,
+                                endColor: Colors.lightBlueAccent,
+                                borderColor: Color(0xFF3489e9),
+                                width: 170.0,
+                                height: 100.0,
+                                borderRadius: 60.0,
+                                gradientOrientation:
+                                    GradientOrientation.Horizontal,
+                                //Navigate to game page
+                                onTap: (finish) async {
+                                  /*
                                       await player.setAsset('assets/game.mp3');
                                       player.play();
                                      Navigator.push(
@@ -259,18 +316,18 @@ class _homepageState extends State<home_page> {
                                      MaterialPageRoute(
                                      builder: (context) => game_page()),
                                   ); */
-                                    },
-                                    child: Text('!العب',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            decoration: TextDecoration.none,
-                                            fontSize: 28.0,
-                                            color: Colors.white,
-                                            fontFamily: 'ReadexPro',
-                                            fontWeight: FontWeight.bold))),
-                              ]),
-                        ])
-                  ]));
+                                },
+                                child: Text('!العب',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        decoration: TextDecoration.none,
+                                        fontSize: 28.0,
+                                        color: Colors.white,
+                                        fontFamily: 'ReadexPro',
+                                        fontWeight: FontWeight.bold))),
+                          ]),
+                    ])
+              ]));
   }
 
   @override
