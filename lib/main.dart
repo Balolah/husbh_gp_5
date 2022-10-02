@@ -46,15 +46,13 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   late VideoPlayerController _controller;
-  late AudioPlayer player;
   @override
   void initState() {
-    player = AudioPlayer();
     super.initState();
     _controller = VideoPlayerController.asset('assets/Rabbit.mp4')
       ..initialize().then((value) => {setState(() {})});
     // _controller.setLooping(true);
-    _controller.setVolume(0.0);
+    _controller.setVolume(1.0);
     _controller.play();
     Timer(
         Duration(seconds: 5),
@@ -63,9 +61,6 @@ class _SplashScreenState extends State<SplashScreen> {
             MaterialPageRoute(
               builder: (context) => LoginScreen(),
             )));
-    // player.setAsset('assets/husbh.mp3');
-    // player.setVolume(1.0);
-    // player.play();
   }
 
   @override
@@ -94,7 +89,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void dispose() {
     super.dispose();
     _controller.dispose();
-    player.dispose();
   }
 
   String replaceFarsiNumber(String input) {
