@@ -1720,8 +1720,7 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (BuildContext context) {
           return AlertDialog(
             content: Stack(
-              overflow: Overflow.visible,
-              children: <Widget>[
+              clipBehavior: Clip.none, children: <Widget>[
                 SingleChildScrollView(
                   child: Directionality(
                     textDirection: TextDirection.rtl,

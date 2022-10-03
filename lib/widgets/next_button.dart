@@ -14,7 +14,7 @@ class NextButton extends StatelessWidget {
         padding: const EdgeInsets.all(17),
         //padding: const EdgeInsets.symmetric(vertical: 5.0),
         width: 100.0,
-        height: 60.0,
+        height: 70.0,
         decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:husbh_app/main.dart';
 import '../../widgets/next_button.dart';
 import '../../widgets/option_card.dart';
+import '../home_page.dart';
 import 'subtractionResultScreen.dart';
 import 'dart:async';
 import 'package:just_audio/just_audio.dart';
@@ -557,14 +558,54 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
               ])
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: Align(
-        alignment: Alignment.topRight,
-        child: Padding(
-            padding: const EdgeInsets.all(35.0),
-            child: Column(
-                children: <Widget>[NextButton(nextQuestion: nextQuestion)])),
-      ),
+
+     //floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30,top: 30,right: 10),
+        child: Row(
+             crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                
+                  FloatingActionButton( 
+                       backgroundColor:Colors.transparent,      
+                     child: Icon(
+                        
+                        //icon: Icon(Icons.arrow_back_ios),
+                        Icons.home_rounded,
+                        color: Colors.brown.shade600,
+                        //color: Colors.blue,
+                        size: 60.0,
+                      ),
+                      
+          heroTag: null, 
+                         onPressed: () { 
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => home_page()),
+                          );
+                        },
+        ),
+        Expanded(child: Container()),
+             
+             Container(
+                height: 70.0,
+                width: 100.0,
+                
+               child: FloatingActionButton(
+                backgroundColor: Colors.transparent, 
+                       child: Column(
+                        
+                        children: <Widget>[NextButton(nextQuestion: nextQuestion)]),
+                    
+                    onPressed: () {
+                    
+
+                  },
+                    heroTag: null,
+                  ),
+             ), ]
+          ),
+      )
     );
   }
 
