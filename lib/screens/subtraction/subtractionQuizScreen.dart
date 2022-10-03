@@ -566,25 +566,29 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 
-                  FloatingActionButton( 
-                       backgroundColor:Colors.transparent,      
-                     child: Icon(
+                  Container(
+                     height: 0.0,
+                     width: 0.0,
+                    child: FloatingActionButton( 
+                         //backgroundColor:Colors.transparent,      
+                       child: Icon(
+                          
+                          //icon: Icon(Icons.arrow_back_ios),
+                          Icons.home_rounded,
+                          color: Colors.brown.shade600,
+                          //color: Colors.blue,
+                          size: 60.0,
+                        ),
                         
-                        //icon: Icon(Icons.arrow_back_ios),
-                        Icons.home_rounded,
-                        color: Colors.brown.shade600,
-                        //color: Colors.blue,
-                        size: 60.0,
-                      ),
-                      
           heroTag: null, 
-                         onPressed: () { 
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => home_page()),
-                          );
-                        },
+                           onPressed: () { 
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => home_page()),
+                            );
+                          },
         ),
+                  ),
         Expanded(child: Container()),
              
              Container(
