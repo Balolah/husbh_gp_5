@@ -332,7 +332,11 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
   String convertToArabic() {
     arabicX = arabicNumber.convert(x);
     arabicY = arabicNumber.convert(y);
-    if (x >= y) {
+
+    if (x==0){
+      return "$arabicX  " + "÷" + "  $arabicY ";
+    }
+    else if (x >= y) {
       return "$arabicX  " + "÷" + "  $arabicY ";
     } else if (x < y) {
       return "$arabicY  " + "÷" + "  $arabicX ";
@@ -437,6 +441,7 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
       // return Center(
       //   child: Text(""),
       // );
+      _printImageY(0.1);
       return Center(
         child: Wrap(
           // direction: Axis.horizontal,
@@ -448,7 +453,7 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
               children: [
                 // for (var i = 0; i < yValue; i++)
                 Image.asset(
-                  objects[2],
+                  objects[3],
                   width: width * 0.09,
                   height: height * 0.15,
                 ),
@@ -460,7 +465,9 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
           ],
         ),
       );
+    
     }
+
     //else show the apples
     return Center(
       child: Wrap(
@@ -486,11 +493,65 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
 
 //returns images for value y (birds)
   Widget _printImageY(yValue) {
+    
+    
     if (yValue == 0) {
       return Center(
         child: Text(""),
       );
     }
+    return Center(
+      child: Wrap(
+        // direction: Axis.horizontal,
+        children: <Widget>[
+          // for (var i = 0; i < xValue; i++)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              for (var i = 0; i < yValue; i++)
+                Image.asset(
+                  objects[1],
+                  width: width * 0.09,
+                  height: height * 0.15,
+                ),
+            ],
+          ),
+          SizedBox(
+            height: height * 0.25,
+          ),
+        ],
+      ),
+    );
+  }
+  Widget _printImageYZero(X,yValue) {
+    
+    
+
+    if(X==0)
+    {return Center(
+      child: Wrap(
+        // direction: Axis.horizontal,
+        children: <Widget>[
+          // for (var i = 0; i < xValue; i++)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              for (var i = 0; i < yValue; i++)
+                Image.asset(
+                  objects[0],
+                  width: width * 0.09,
+                  height: height * 0.15,
+                ),
+            ],
+          ),
+          SizedBox(
+            height: height * 0.25,
+          ),
+        ],
+      ),
+    );}
     return Center(
       child: Wrap(
         // direction: Axis.horizontal,
@@ -873,7 +934,21 @@ class _divisionQuizScreenState extends State<divisionQuizScreen> {
       //   ),
       // );
       //////////////////////////////////////
-      return SizedBox(
+      ///
+      if(Xx[j]==0){
+        return SizedBox(
+        height: height * 0.55,
+        child: Align(
+          alignment: Alignment.center,
+          child: Wrap(
+            children: [
+              SizedBox(child: _printImageYZero(0,Yy[j])),
+              SizedBox(child: _printImageX(Xx[j])),
+            ],
+          ),
+        ),
+      );}
+      else return SizedBox(
         height: height * 0.55,
         child: Align(
           alignment: Alignment.center,
