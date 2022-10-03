@@ -571,8 +571,8 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
               children: [
                 
                   Container(
-                    height: 0,
-                    width: 0,
+                    height: 60,
+                    width: 60,
                     child: FloatingActionButton( 
                          backgroundColor:Colors.transparent,      
                        child: Icon(

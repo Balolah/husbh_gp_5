@@ -567,10 +567,10 @@ class _QuizScreenState extends State<subtractionQuizScreen> {
               children: [
                 
                   Container(
-                     height: 0.0,
-                     width: 0.0,
+                     height: 60.0,
+                     width: 60.0,
                     child: FloatingActionButton( 
-                         //backgroundColor:Colors.transparent,      
+                         backgroundColor:Colors.transparent,      
                        child: Icon(
                           
                           //icon: Icon(Icons.arrow_back_ios),
