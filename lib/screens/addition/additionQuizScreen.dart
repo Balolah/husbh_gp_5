@@ -403,218 +403,210 @@ class _additionQuizScreenState extends State<additionQuizScreen> {
     textDirection:
     TextDirection.rtl;
     return Scaffold(
-      body: Stack(
-        textDirection: TextDirection.rtl,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/farm.jpg'),
-                fit: BoxFit.cover,
+        body: Stack(
+          textDirection: TextDirection.rtl,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/farm.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Column(
-              textDirection: TextDirection.rtl,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  child: Text(qustions[j],
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.lightBlue,
-                          fontFamily: "ReadexPro-Regular",
-                          fontSize:
-                              MediaQuery.of(context).size.width > 500 ? 45 : 20,
-                          fontWeight: FontWeight.bold)),
-                ),
-                ImagesUnderQuestion(j),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: <
-                    Widget>[
-                  SizedBox(
-                    height: height * 0.155,
-                    width: width * 0.13,
-                    child: OptionCard(
-                        option: mcq[j][0].toString(),
-                        color: isPressed
-                            ? (mcq[j][0].toString() ==
-                                    convertOptionsToArabic(answers[j])
-                                        .toString())
-                                ? const Color.fromARGB(
-                                    255, 50, 132, 9) //correct
-                                : const Color.fromRGBO(
-                                    218, 39, 39, 1) //incorrect
-                            : const Color(0xFF3489e9),
-                        onTap: () async {
-                          if (mcq[j][0].toString() ==
-                              convertOptionsToArabic(answers[j]).toString()) {
-                            await player.setAsset('assets/good_job.mp3');
-                            player.play();
-                          } else {
-                            await player.setAsset('assets/wrong_answer.mp3');
-                            player.play();
-                          }
-                          changeColor();
-                          // _audioCache.play('OptionsSound.mp3');
-                          //await
-                          await Future.delayed(const Duration(seconds: 4), () {
-                            _changeQuestion(mcq[j][0].toString());
-                          });
-                        }),
-                  ),
-                  SizedBox(height: height * 0.20, width: width * 0.03),
-                  SizedBox(
-                    height: height * 0.155,
-                    width: width * 0.13,
-                    child: OptionCard(
-                        option: mcq[j][1].toString(),
-                        color: isPressed
-                            ? (mcq[j][1].toString() ==
-                                    convertOptionsToArabic(answers[j])
-                                        .toString())
-                                ? const Color.fromARGB(
-                                    255, 50, 132, 9) //correct
-                                : const Color.fromRGBO(
-                                    218, 39, 39, 1) //incorrect
-                            : const Color(0xFF3489e9),
-                        onTap: () async {
-                          if (mcq[j][1].toString() ==
-                              convertOptionsToArabic(answers[j]).toString()) {
-                            await player.setAsset('assets/good_job.mp3');
-                            player.play();
-                          } else {
-                            await player.setAsset('assets/wrong_answer.mp3');
-                            player.play();
-                          }
-                          changeColor();
-                          // _audioCache.play('OptionsSound.mp3');
-                          //await
-                          await Future.delayed(const Duration(seconds: 4), () {
-                            _changeQuestion(mcq[j][1].toString());
-                          });
-                        }),
-                  ),
-                  SizedBox(height: height * 0.20, width: width * 0.03),
-                  SizedBox(
-                    height: height * 0.155,
-                    width: width * 0.13,
-                    child: OptionCard(
-                        option: mcq[j][2].toString(),
-                        color: isPressed
-                            ? (mcq[j][2].toString() ==
-                                    convertOptionsToArabic(answers[j])
-                                        .toString())
-                                ? const Color.fromARGB(
-                                    255, 50, 132, 9) //correct
-                                : const Color.fromRGBO(
-                                    218, 39, 39, 1) //incorrect
-                            : const Color(0xFF3489e9),
-                        onTap: () async {
-                          if (mcq[j][2].toString() ==
-                              convertOptionsToArabic(answers[j]).toString()) {
-                            await player.setAsset('assets/good_job.mp3');
-                            player.play();
-                          } else {
-                            await player.setAsset('assets/wrong_answer.mp3');
-                            player.play();
-                          }
-                          changeColor();
-                          // _audioCache.play('OptionsSound.mp3');
-                          //await
-                          await Future.delayed(const Duration(seconds: 4), () {
-                            _changeQuestion(mcq[j][2].toString());
-                          });
-                        }),
-                  ),
-                  SizedBox(height: height * 0.20, width: width * 0.03),
-                  SizedBox(
-                    height: height * 0.155,
-                    width: width * 0.13,
-                    child: OptionCard(
-                        option: mcq[j][3].toString(),
-                        color: isPressed
-                            ? (mcq[j][3].toString() ==
-                                    convertOptionsToArabic(answers[j])
-                                        .toString())
-                                ? const Color.fromARGB(
-                                    255, 50, 132, 9) //correct
-                                : const Color.fromRGBO(
-                                    218, 39, 39, 1) //incorrect
-                            : const Color(0xFF3489e9),
-                        onTap: () async {
-                          if (mcq[j][3].toString() ==
-                              convertOptionsToArabic(answers[j]).toString()) {
-                            await player.setAsset('assets/good_job.mp3');
-                            player.play();
-                          } else {
-                            await player.setAsset('assets/wrong_answer.mp3');
-                            player.play();
-                          }
-                          changeColor();
-                          // _audioCache.play('OptionsSound.mp3');
-                          //await
-                          await Future.delayed(const Duration(seconds: 4), () {
-                            _changeQuestion(mcq[j][3].toString());
-                          });
-                        }),
-                  ),
-                  SizedBox(height: height * 0.20, width: width * 0.03),
-                ]),
-              ])
-        ],
-      ),
-      //floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(left: 30,top: 30,right: 10),
-        child: Row(
-             crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                
+            Column(
+                textDirection: TextDirection.rtl,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   Container(
-                    height: 60,
-                    width: 60,
-                    child: FloatingActionButton( 
-                         backgroundColor:Colors.transparent,      
-                       child: Icon(
-                          
-                          //icon: Icon(Icons.arrow_back_ios),
-                          Icons.home_rounded,
-                          color: Colors.brown.shade600,
-                          //color: Colors.blue,
-                          size: 60.0,
-                        ),
-                        
-          heroTag: null, 
-                           onPressed: () { 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => home_page()),
-                            );
-                          },
+                    child: Text(qustions[j],
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.lightBlue,
+                            fontFamily: "ReadexPro-Regular",
+                            fontSize: MediaQuery.of(context).size.width > 500
+                                ? 45
+                                : 20,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  ImagesUnderQuestion(j),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+                      Widget>[
+                    SizedBox(
+                      height: height * 0.155,
+                      width: width * 0.13,
+                      child: OptionCard(
+                          option: mcq[j][0].toString(),
+                          color: isPressed
+                              ? (mcq[j][0].toString() ==
+                                      convertOptionsToArabic(answers[j])
+                                          .toString())
+                                  ? const Color.fromARGB(
+                                      255, 50, 132, 9) //correct
+                                  : const Color.fromRGBO(
+                                      218, 39, 39, 1) //incorrect
+                              : const Color(0xFF3489e9),
+                          onTap: () async {
+                            if (mcq[j][0].toString() ==
+                                convertOptionsToArabic(answers[j]).toString()) {
+                              await player.setAsset('assets/good_job.mp3');
+                              player.play();
+                            } else {
+                              await player.setAsset('assets/wrong_answer.mp3');
+                              player.play();
+                            }
+                            changeColor();
+                            // _audioCache.play('OptionsSound.mp3');
+                            //await
+                            await Future.delayed(const Duration(seconds: 4),
+                                () {
+                              _changeQuestion(mcq[j][0].toString());
+                            });
+                          }),
+                    ),
+                    SizedBox(height: height * 0.20, width: width * 0.03),
+                    SizedBox(
+                      height: height * 0.155,
+                      width: width * 0.13,
+                      child: OptionCard(
+                          option: mcq[j][1].toString(),
+                          color: isPressed
+                              ? (mcq[j][1].toString() ==
+                                      convertOptionsToArabic(answers[j])
+                                          .toString())
+                                  ? const Color.fromARGB(
+                                      255, 50, 132, 9) //correct
+                                  : const Color.fromRGBO(
+                                      218, 39, 39, 1) //incorrect
+                              : const Color(0xFF3489e9),
+                          onTap: () async {
+                            if (mcq[j][1].toString() ==
+                                convertOptionsToArabic(answers[j]).toString()) {
+                              await player.setAsset('assets/good_job.mp3');
+                              player.play();
+                            } else {
+                              await player.setAsset('assets/wrong_answer.mp3');
+                              player.play();
+                            }
+                            changeColor();
+                            // _audioCache.play('OptionsSound.mp3');
+                            //await
+                            await Future.delayed(const Duration(seconds: 4),
+                                () {
+                              _changeQuestion(mcq[j][1].toString());
+                            });
+                          }),
+                    ),
+                    SizedBox(height: height * 0.20, width: width * 0.03),
+                    SizedBox(
+                      height: height * 0.155,
+                      width: width * 0.13,
+                      child: OptionCard(
+                          option: mcq[j][2].toString(),
+                          color: isPressed
+                              ? (mcq[j][2].toString() ==
+                                      convertOptionsToArabic(answers[j])
+                                          .toString())
+                                  ? const Color.fromARGB(
+                                      255, 50, 132, 9) //correct
+                                  : const Color.fromRGBO(
+                                      218, 39, 39, 1) //incorrect
+                              : const Color(0xFF3489e9),
+                          onTap: () async {
+                            if (mcq[j][2].toString() ==
+                                convertOptionsToArabic(answers[j]).toString()) {
+                              await player.setAsset('assets/good_job.mp3');
+                              player.play();
+                            } else {
+                              await player.setAsset('assets/wrong_answer.mp3');
+                              player.play();
+                            }
+                            changeColor();
+                            // _audioCache.play('OptionsSound.mp3');
+                            //await
+                            await Future.delayed(const Duration(seconds: 4),
+                                () {
+                              _changeQuestion(mcq[j][2].toString());
+                            });
+                          }),
+                    ),
+                    SizedBox(height: height * 0.20, width: width * 0.03),
+                    SizedBox(
+                      height: height * 0.155,
+                      width: width * 0.13,
+                      child: OptionCard(
+                          option: mcq[j][3].toString(),
+                          color: isPressed
+                              ? (mcq[j][3].toString() ==
+                                      convertOptionsToArabic(answers[j])
+                                          .toString())
+                                  ? const Color.fromARGB(
+                                      255, 50, 132, 9) //correct
+                                  : const Color.fromRGBO(
+                                      218, 39, 39, 1) //incorrect
+                              : const Color(0xFF3489e9),
+                          onTap: () async {
+                            if (mcq[j][3].toString() ==
+                                convertOptionsToArabic(answers[j]).toString()) {
+                              await player.setAsset('assets/good_job.mp3');
+                              player.play();
+                            } else {
+                              await player.setAsset('assets/wrong_answer.mp3');
+                              player.play();
+                            }
+                            changeColor();
+                            // _audioCache.play('OptionsSound.mp3');
+                            //await
+                            await Future.delayed(const Duration(seconds: 4),
+                                () {
+                              _changeQuestion(mcq[j][3].toString());
+                            });
+                          }),
+                    ),
+                    SizedBox(height: height * 0.20, width: width * 0.03),
+                  ]),
+                ])
+          ],
         ),
-                  ),
-        Expanded(child: Container()),
-             
-             Container(
-                height: 70.0,
-                width: 100.0,
-                
-               child: FloatingActionButton(
-                backgroundColor: Colors.transparent, 
-                       child: Column(
-                        
-                        children: <Widget>[NextButton(nextQuestion: nextQuestion)]),
-                    
-                    onPressed: () {
-                    
-
-                  },
-                    heroTag: null,
-                  ),
-             ), ]
-          ),
-      )
-    );
+        //floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(left: 30, top: 30, right: 10),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              height: 60,
+              width: 60,
+              child: FloatingActionButton(
+                backgroundColor: Colors.transparent,
+                child: Icon(
+                  //icon: Icon(Icons.arrow_back_ios),
+                  Icons.home_rounded,
+                  color: Colors.brown.shade600,
+                  //color: Colors.blue,
+                  size: 60.0,
+                ),
+                heroTag: null,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => home_page()),
+                  );
+                },
+              ),
+            ),
+            Expanded(child: Container()),
+            Container(
+              height: 70.0,
+              width: 100.0,
+              child: FloatingActionButton(
+                backgroundColor: Colors.transparent,
+                child: Column(
+                    children: <Widget>[NextButton(nextQuestion: nextQuestion)]),
+                onPressed: () {},
+                heroTag: null,
+              ),
+            ),
+          ]),
+        ));
   }
 
   // ignore: non_constant_identifier_names
