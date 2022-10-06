@@ -206,7 +206,8 @@ class _homepageState extends State<home_page> {
                               //change the dialog type here ex: INFO
                               dialogType: DialogType.QUESTION,
                               body: const Center(
-                                  child: Text('husbh \nis an application ....',
+                                  child: Text('حٌسبة \nهو تطبيق لتعليم الاطفال العمليات الحسابية وجعل عملية التعليم ممتعة باستخدام الواقع المعزز في مجال الالعاب. 
+قم باختيار احدى العمليات الحسابية ولنبدأ التعلم معاً',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         decoration: TextDecoration.none,
