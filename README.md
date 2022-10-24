@@ -5,10 +5,10 @@ The graduation project (GP1) Flutter application done by group 5.
 ## Info
 
 - Introduction:
-Husbh, is an Arabic application for children from age 6-8 to learn math operations (addition, subtraction, multiplication and division) and with Augmented Reality (AR) games. Our application provides a an interesting learning methods my providing a joyful animation videos and follow-up questions for the child to answer them.
+Husbh, is an Arabic application for children from age 6-8 to learn math operations (addition, subtraction, multiplication, and division) with Augmented Reality (AR) games. Our application provides an interesting learning method by providing joyful animation videos and follow-up questions for the child to answer, and fun and interactive games to play.
 
 - Technology:
-We used Flutter, which is a framework that uses Dart language.
+We used Flutter, which is a framework that uses Dart language, and Unity, which is a cross-platform game engine.
 
 - Launching instructions:\
 1- Download Android Studio and create virtual device (emulator) \
