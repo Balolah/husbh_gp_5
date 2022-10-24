@@ -1,6 +1,6 @@
 # Husbh
 
-The graduation project (GP1) Flutter application done by group 5.
+The graduation project Flutter-Unity application done by group 5.
 
 ## Info
 
